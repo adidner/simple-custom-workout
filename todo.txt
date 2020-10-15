@@ -1,20 +1,26 @@
 CreateStart
 - Async storage save, use specific pattern
 - Async storage load, use specific pattern
+-̶ A̶c̶t̶u̶a̶l̶ G̶U̶I̶
+-̶ I̶c̶o̶n̶s̶
+- Loading icon for async storage grab
+- Delete confirm Modal
 
 CreateEditScreen
 - Add exercise modal
 - Add rest modal
 - flatlist element
 - draging to rearrange library finding and testing
+- Actual GUI
 
 Rest
 - Timer/timer logic
 - Skip
 - Next up at the bottom
+- Actual GUI
 
 Exercise
-- Visual stuffs
+- GUI
 
 Settings
 - Header icon, setup
@@ -23,17 +29,17 @@ Settings
 - Github Link
 - Donate, paypal or venmo
 
-Redux
-- index of current exercise for rendering currently running exercise program
-- general setup
+R̶e̶d̶u̶x̶
+-̶ i̶n̶d̶e̶x̶ o̶f̶ c̶u̶r̶r̶e̶n̶t̶ e̶x̶e̶r̶c̶i̶s̶e̶ f̶o̶r̶ r̶e̶n̶d̶e̶r̶i̶n̶g̶ c̶u̶r̶r̶e̶n̶t̶l̶y̶ r̶u̶n̶n̶i̶n̶g̶ e̶x̶e̶r̶c̶i̶s̶e̶ p̶r̶o̶g̶r̶a̶m̶
+-̶ g̶e̶n̶e̶r̶a̶l̶ s̶e̶t̶u̶p̶
 
-Constants
-- structure of playlist for exercise
-- structure of exercise and rest objects
+C̶o̶n̶s̶t̶a̶n̶t̶s̶
+-̶ s̶t̶r̶u̶c̶t̶u̶r̶e̶ o̶f̶ p̶l̶a̶y̶l̶i̶s̶t̶ f̶o̶r̶ e̶x̶e̶r̶c̶i̶s̶e̶
+-̶ s̶t̶r̶u̶c̶t̶u̶r̶e̶ o̶f̶ e̶x̶e̶r̶c̶i̶s̶e̶ a̶n̶d̶ r̶e̶s̶t̶ o̶b̶j̶e̶c̶t̶s̶
 
-Github
-- Development branch 
-- Sub branch
+G̶i̶t̶h̶u̶b̶
+-̶ D̶e̶v̶e̶l̶o̶p̶m̶e̶n̶t̶ b̶r̶a̶n̶c̶h̶ 
+-̶ S̶u̶b̶ b̶r̶a̶n̶c̶h̶
 
 Publishing
 - Getting App Icon, from fiver
