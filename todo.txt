@@ -31,6 +31,16 @@ Constants
 - structure of playlist for exercise
 - structure of exercise and rest objects
 
+Github
+- Development branch 
+- Sub branch
+
+Publishing
+- Getting App Icon, from fiver
+- Quizzes
+- Privacy Policy
+- APK creation/testing
+- Review
 
 
 Bonus stuff
