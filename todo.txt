@@ -1,0 +1,39 @@
+CreateStart
+- Async storage save, use specific pattern
+- Async storage load, use specific pattern
+
+CreateEditScreen
+- Add exercise modal
+- Add rest modal
+- flatlist element
+- draging to rearrange library finding and testing
+
+Rest
+- Timer/timer logic
+- Skip
+- Next up at the bottom
+
+Exercise
+- Visual stuffs
+
+Settings
+- Header icon, setup
+- Privacy Policy, site and linking
+- Credits
+- Github Link
+- Donate, paypal or venmo
+
+Redux
+- index of current exercise for rendering currently running exercise program
+- general setup
+
+Constants
+- structure of playlist for exercise
+- structure of exercise and rest objects
+
+
+
+Bonus stuff
+- Add a 3rd type, exercise reps, exercise time, rest (for those who want to do like 30 seconds of planks or whatever in a similar format to rest)
+- Add +20 seconds to rest buttom
+- Sound affects on finish of an exercise and on start of exercise, with settings to turn off or change?
