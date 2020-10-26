@@ -8,3 +8,7 @@ export function getExerciseIndex(state: reduxState){
 export function getCurrentWorkout(state: reduxState){
     return state.currentWorkout;
 }
+
+export function getAllWorkouts(state: reduxState){
+    return state.allWorkouts;
+}
