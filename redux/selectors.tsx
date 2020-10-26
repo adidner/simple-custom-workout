@@ -12,3 +12,7 @@ export function getCurrentWorkout(state: reduxState){
 export function getAllWorkouts(state: reduxState){
     return state.allWorkouts;
 }
+
+export function getCurrentAllWorkoutsIndex(state: reduxState){
+    return state.currentAllWorkoutsIndex;
+}

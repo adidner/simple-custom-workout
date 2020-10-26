@@ -7,6 +7,7 @@ CreateStart
 - Delete confirm Modal
 
 CreateEditScreen
+- ICONS FOR FLATLIST
 - Add exercise modal
 - Add rest modal
 - flatlist element

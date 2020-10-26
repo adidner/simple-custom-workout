@@ -5,12 +5,14 @@ export interface actionInterface{
     currentWorkout: workoutPlaylist;
     exerciseIndex: number;
     allWorkouts: workoutPlaylist[];
+    currentAllWorkoutsIndex: number;
 }
 
 
 export const SET_CURRENT_WORKOUT = "SET_CURRENT_WORKOUT";
 export const SET_EXERCISE_INDEX = "SET_EXERCISE_INDEX";
 export const SET_ALL_WORKOUTS = "SET_ALL_WORKOUTS";
+export const SET_CURRENT_ALL_WORKOUTS_INDEX = "SET_CURRENT_ALL_WORKOUTS_INDEX";
 
 
 export function setCurrentWorkout(currentWorkout: workoutPlaylist){
@@ -23,4 +25,8 @@ export function setExerciseIndex(exerciseIndex: number){
 
 export function setAllWorkouts(allWorkouts: workoutPlaylist[]){
     return {type: SET_ALL_WORKOUTS, allWorkouts}
+}
+
+export function setCurrentAllWorkoutsIndex(currentAllWorkoutsIndex: number){
+    return {type: SET_CURRENT_ALL_WORKOUTS_INDEX, currentAllWorkoutsIndex}
 }
