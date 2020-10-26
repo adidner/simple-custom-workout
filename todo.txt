@@ -1,9 +1,9 @@
 CreateStart
+- Loading icon for async storage grab
 - Async storage save, use specific pattern
 - Async storage load, use specific pattern
 -̶ A̶c̶t̶u̶a̶l̶ G̶U̶I̶
 -̶ I̶c̶o̶n̶s̶
-- Loading icon for async storage grab
 - Delete confirm Modal
 
 CreateEditScreen

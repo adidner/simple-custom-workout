@@ -1,10 +1,12 @@
 export interface reduxState{
-    exerciseIndex: number;
-    currentWorkout: workoutPlaylist;
+    exerciseIndex?: number;
+    currentWorkout?: workoutPlaylist;
+    allWorkouts: workoutPlaylist[];
 }
 
 export interface workoutPlaylist{
-    [index:number]: (exerciseElement | restElement);
+    workoutName: string;
+    exerciseList: (exerciseElement | restElement)[];
 }
 
 export interface exerciseElement{
