@@ -2,6 +2,7 @@ export interface reduxState{
     exerciseIndex?: number;
     currentWorkout?: workoutPlaylist;
     allWorkouts: workoutPlaylist[];
+    currentAllWorkoutsIndex?: number;
 }
 
 export interface workoutPlaylist{
@@ -19,3 +20,7 @@ export interface restElement{
     restTime: number;
 }
 
+export interface restAndExerciseElement{
+    name: string; 
+    repsOrTime: string;
+}
