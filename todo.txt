@@ -1,3 +1,14 @@
+NEXT:
+- Hook up navigation from CreateStartScreen to CreateEditScreen
+- Hook up redux so it populates correctly and do the correct dispatches and such
+- Make the UI prettier in terms of spacing and such (margins and padding)
+- Make the save button actually work and dispatch things correctly
+- ICONS
+- Draggable list
+- Exercise and rest modals and corresponding state for visibility and state for adding elements to the list of stuff
+
+
+
 CreateStart
 - Loading icon for async storage grab
 - Async storage save, use specific pattern

@@ -4,7 +4,8 @@ import {reduxState} from '../constants/interfaces'
 const initialState: reduxState = {
     currentWorkout: undefined,
     exerciseIndex: undefined,
-    allWorkouts: [{workoutName: "workout1", exerciseList: []},{workoutName: "workout2", exerciseList: []}, {workoutName: "workout3", exerciseList: []}],
+    //we should grab all workouts from memory, and we should re-index things upon retrieval and whenever we delete an obj
+    allWorkouts: [{index: 0, workoutName: "workout1name", exerciseList: [{exerciseName: "HSPUs", exerciseReps: 12},{restTime: 180}]},{index: 1, workoutName: "workout2name", exerciseList: [{restTime: 20}, {exerciseName: "Pullups", exerciseReps: 15},]}, {index: 2, workoutName: "workout3name", exerciseList: []}],
     currentAllWorkoutsIndex: undefined,
 };
   
@@ -12,7 +13,8 @@ const initialState: reduxState = {
     switch (action.type){
       case SET_CURRENT_WORKOUT:
         return Object.assign({}, state, {
-            currentWorkout: action.currentWorkout
+            currentWorkout: state.allWorkouts[action.currentWorkoutIndex],
+            currentWorkoutIndex: action.currentWorkoutIndex
           })
       case SET_EXERCISE_INDEX:
         return Object.assign({}, state, {

@@ -7,6 +7,7 @@ export interface reduxState{
 
 export interface workoutPlaylist{
     workoutName: string;
+    index: number;
     exerciseList: (exerciseElement | restElement)[];
 }
 
@@ -16,7 +17,7 @@ export interface exerciseElement{
 }
 
 export interface restElement{
-    restName: string;
+    restName?: string;
     restTime: number;
 }
 

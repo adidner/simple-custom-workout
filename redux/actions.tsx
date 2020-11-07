@@ -2,7 +2,7 @@ import { workoutPlaylist } from "../constants/interfaces";
 
 export interface actionInterface{
     type: string;
-    currentWorkout: workoutPlaylist;
+    currentWorkoutIndex: number;
     exerciseIndex: number;
     allWorkouts: workoutPlaylist[];
     currentAllWorkoutsIndex: number;
@@ -15,8 +15,8 @@ export const SET_ALL_WORKOUTS = "SET_ALL_WORKOUTS";
 export const SET_CURRENT_ALL_WORKOUTS_INDEX = "SET_CURRENT_ALL_WORKOUTS_INDEX";
 
 
-export function setCurrentWorkout(currentWorkout: workoutPlaylist){
-    return {type: SET_CURRENT_WORKOUT, currentWorkout}
+export function setCurrentWorkoutByIndex(currentWorkoutIndex: number){
+    return {type: SET_CURRENT_WORKOUT, currentWorkoutIndex}
 }
 
 export function setExerciseIndex(exerciseIndex: number){
