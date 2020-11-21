@@ -14,11 +14,15 @@ export interface workoutPlaylist{
 export interface exerciseElement{
     exerciseName: string;
     exerciseReps: number;
+    drag?: () => void;
+    key: string;
 }
 
 export interface restElement{
     restName?: string;
     restTime: number;
+    drag?: () => void;
+    key: string;
 }
 
 export interface restAndExerciseElement{
