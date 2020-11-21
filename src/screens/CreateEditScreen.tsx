@@ -9,14 +9,16 @@ import { Entypo } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons'; 
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { ButtonColor } from '../../constants/colorStuff';
+import DraggableFlatList from "react-native-draggable-flatlist";
+import TestComponent from "./TestComponent";
 
 export default function CreateEdit(){
 
-    
     var currentWorkout: workoutPlaylist | undefined = useSelector(getCurrentWorkout);
     console.log(currentWorkout);
     const [titleValue, onChangeTitle] = useState(currentWorkout != undefined ? currentWorkout.workoutName : "");
     const [exerciseRestPlaylist, onChangeExerciseRestPlaylist] = useState(currentWorkout != undefined ? currentWorkout.exerciseList : []);
+    
 
     function onSave(){
         //override state in redux store, using local state playlist obj to override the one at the index we're talking about
@@ -30,9 +32,44 @@ export default function CreateEdit(){
 
     }
 
+    // function renderItem(item: any, index: any, drag: any, isActive: any ){
+    //     return (
+    //       <TouchableOpacity
+    //         style={{
+    //           height: 100,
+    //           backgroundColor: isActive ? "blue" : item.backgroundColor,
+    //           alignItems: "center",
+    //           justifyContent: "center"
+    //         }}
+    //         onLongPress={drag}
+    //       >
+    //         <Text
+    //           style={{
+    //             fontWeight: "bold",
+    //             color: "white",
+    //             fontSize: 32
+    //           }}
+    //         >
+    //           {item.label}
+    //         </Text>
+    //       </TouchableOpacity>
+    //     );
+    // }
+
+    let renderItem = (item: any, index: any, drag: any, isActive: any ) => {
+        if((item as exerciseElement).exerciseName){   
+            var exercise = item as exerciseElement
+            return <ExerciseElement drag={drag} exerciseName={exercise.exerciseName} exerciseReps={exercise.exerciseReps} />;
+        }
+        else if((item as restElement).restTime){
+            var rest = item as restElement
+            return <RestElement drag={drag} restName={rest.restName} restTime={rest.restTime} />;
+        }
+        return <View/>;
+    }
     
     return (
-        <View>
+        <View style={{flex: 1}}>
             <View style={{flexDirection: "row", justifyContent: "center"}}>
                 <TextInput  style={{paddingVertical: 8, paddingHorizontal: 4, margin: 7, borderBottomColor: "black", borderBottomWidth: 1}} value={titleValue} placeholder={titleValue ? "" : "Enter Workout Title"} onChangeText={onChangeTitle}/>
                 <TouchableOpacity  style={{padding: 12, margin: 7, backgroundColor: ButtonColor}} onPress={onSave}><Text>Save Workout</Text></TouchableOpacity>
@@ -43,25 +80,17 @@ export default function CreateEdit(){
                 <TouchableOpacity onPress={onAddRest} style={{padding: 12, backgroundColor: ButtonColor, margin: 7}}><Text>Add Rest</Text></TouchableOpacity>
             </View>
 
-            <View>
-                <FlatList
+            <View style={{flex: 1}}>
+                <DraggableFlatList
                     data={exerciseRestPlaylist}
-                    renderItem={({item}) => {
-                        //if(item as exerciseElement){
-                        if((item as exerciseElement).exerciseName){   
-                            var exercise = item as exerciseElement
-                            return <ExerciseElement exerciseName={exercise.exerciseName} exerciseReps={exercise.exerciseReps} />;
-                        }
-                        else if((item as restElement).restTime){
-                            var rest = item as restElement
-                            return <RestElement restName={rest.restName} restTime={rest.restTime} />;
-                        }
-                        return <View/>;
-                    }}
-                    keyExtractor={item => {return createGuid()}}
+                    renderItem={({ item, index, drag, isActive }) => renderItem( item, index, drag, isActive )}
+                    keyExtractor={item => {return item.key}}
+                    onDragEnd={({ data }) => onChangeExerciseRestPlaylist(data)}
                 />
             </View>
+            
 
+             {/* <TestComponent/> */}
         </View>
     );
 }
@@ -79,8 +108,8 @@ function ExerciseElement(props: exerciseElement){
     }
 
     return (
-        <View style={{flexDirection:'row', alignItems: "center", marginHorizontal: 12, justifyContent:'space-between', backgroundColor: "green", marginVertical: 10, padding: 12, flex: 1, backgroundColor: "purple",}}>
-            <View><Entypo name="menu" size={50} color="black" /></View>
+        <View style={{flexDirection:'row', alignItems: "center", marginHorizontal: 12, justifyContent:'space-between', marginVertical: 10, padding: 12, flex: 1, backgroundColor: "purple",}}>
+            <TouchableOpacity onPressIn={props.drag}><Entypo name="menu" size={50} color="black" /></TouchableOpacity>
             <View style={{flexDirection: "row"}}>
                 <View><Text style={{fontSize: 20, paddingHorizontal: 4}}>{props.exerciseName}</Text></View>
                 <View><Text style={{fontSize: 20, paddingHorizontal: 4}}>{props.exerciseReps}</Text></View>
@@ -104,8 +133,8 @@ function RestElement(props: restElement){
     }
 
     return (
-        <View style={{flexDirection:'row', alignItems: "center", marginHorizontal: 12, justifyContent:'space-between', marginVertical: 10, padding: 12, flex: 1, backgroundColor: "purple",}}>
-            <View><Entypo name="menu" size={50} color="black" /></View>
+        <View  style={{flexDirection:'row', alignItems: "center", marginHorizontal: 12, justifyContent:'space-between', marginVertical: 10, padding: 12, flex: 1, backgroundColor: "purple",}}>
+            <TouchableOpacity onPressIn={props.drag}><Entypo name="menu" size={50} color="black" /></TouchableOpacity>
             <View style={{flexDirection: "row"}}>
                 <View><Text style={{fontSize: 20, paddingHorizontal: 4}}>{props.restName != undefined ? props.restName : "Rest"}</Text></View>
                 <View><Text style={{fontSize: 20, paddingHorizontal: 4}}>{secondsToDisplayTimeString(props.restTime)}</Text></View>

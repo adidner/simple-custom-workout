@@ -1,11 +1,12 @@
 NEXT:
-- Hook up navigation from CreateStartScreen to CreateEditScreen
-- Hook up redux so it populates correctly and do the correct dispatches and such
-- Make the UI prettier in terms of spacing and such (margins and padding)
+-̶ H̶o̶o̶k̶ u̶p̶ n̶a̶v̶i̶g̶a̶t̶i̶o̶n̶ f̶r̶o̶m̶ C̶r̶e̶a̶t̶e̶S̶t̶a̶r̶t̶S̶c̶r̶e̶e̶n̶ t̶o̶ C̶r̶e̶a̶t̶e̶E̶d̶i̶t̶S̶c̶r̶e̶e̶n̶
+-̶ H̶o̶o̶k̶ u̶p̶ r̶e̶d̶u̶x̶ s̶o̶ i̶t̶ p̶o̶p̶u̶l̶a̶t̶e̶s̶ c̶o̶r̶r̶e̶c̶t̶l̶y̶ a̶n̶d̶ d̶o̶ t̶h̶e̶ c̶o̶r̶r̶e̶c̶t̶ d̶i̶s̶p̶a̶t̶c̶h̶e̶s̶ a̶n̶d̶ s̶u̶c̶h̶
+-̶ M̶a̶k̶e̶ t̶h̶e̶ U̶I̶ p̶r̶e̶t̶t̶i̶e̶r̶ i̶n̶ t̶e̶r̶m̶s̶ o̶f̶ s̶p̶a̶c̶i̶n̶g̶ a̶n̶d̶ s̶u̶c̶h̶ (̶m̶a̶r̶g̶i̶n̶s̶ a̶n̶d̶ p̶a̶d̶d̶i̶n̶g̶)̶
 - Make the save button actually work and dispatch things correctly
-- ICONS
-- Draggable list
+-̶ I̶C̶O̶N̶S̶
+-̶ D̶r̶a̶g̶g̶a̶b̶l̶e̶ l̶i̶s̶t̶  !̶!̶!̶!̶!̶!̶!̶!̶!̶!̶ C̶o̶n̶t̶i̶n̶u̶e̶ t̶o̶ t̶o̶u̶b̶l̶e̶ s̶h̶o̶o̶t̶ o̶r̶ s̶w̶i̶t̶c̶h̶ t̶o̶ d̶y̶n̶a̶m̶i̶c̶ v̶e̶r̶s̶i̶o̶n̶ i̶n̶ l̶i̶r̶b̶a̶r̶y̶ i̶f̶ t̶o̶ d̶i̶f̶f̶i̶c̶u̶l̶t̶
 - Exercise and rest modals and corresponding state for visibility and state for adding elements to the list of stuff
+- Also editing and how that should work in terms of dealing with something that already has existed
 
 
 
