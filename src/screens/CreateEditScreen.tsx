@@ -11,6 +11,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { ButtonColor } from '../../constants/colorStuff';
 import DraggableFlatList from "react-native-draggable-flatlist";
 import TestComponent from "./TestComponent";
+import AddExerciseModal from '../components/AddExerciseModal';
 
 export default function CreateEdit(){
 
@@ -18,6 +19,8 @@ export default function CreateEdit(){
     console.log(currentWorkout);
     const [titleValue, onChangeTitle] = useState(currentWorkout != undefined ? currentWorkout.workoutName : "");
     const [exerciseRestPlaylist, onChangeExerciseRestPlaylist] = useState(currentWorkout != undefined ? currentWorkout.exerciseList : []);
+    const [addExerciseModalVisisble, setAddExerciseModalVisisble] = useState(false);
+    const [addRestModalVisisble, setAddRestModalVisisble] = useState(false);
     
 
     function onSave(){
@@ -32,44 +35,21 @@ export default function CreateEdit(){
 
     }
 
-    // function renderItem(item: any, index: any, drag: any, isActive: any ){
-    //     return (
-    //       <TouchableOpacity
-    //         style={{
-    //           height: 100,
-    //           backgroundColor: isActive ? "blue" : item.backgroundColor,
-    //           alignItems: "center",
-    //           justifyContent: "center"
-    //         }}
-    //         onLongPress={drag}
-    //       >
-    //         <Text
-    //           style={{
-    //             fontWeight: "bold",
-    //             color: "white",
-    //             fontSize: 32
-    //           }}
-    //         >
-    //           {item.label}
-    //         </Text>
-    //       </TouchableOpacity>
-    //     );
-    // }
-
     let renderItem = (item: any, index: any, drag: any, isActive: any ) => {
         if((item as exerciseElement).exerciseName){   
             var exercise = item as exerciseElement
-            return <ExerciseElement drag={drag} exerciseName={exercise.exerciseName} exerciseReps={exercise.exerciseReps} />;
+            return <ExerciseElement drag={drag} exerciseName={exercise.exerciseName} exerciseReps={exercise.exerciseReps} key={exercise.key}/>;
         }
         else if((item as restElement).restTime){
             var rest = item as restElement
-            return <RestElement drag={drag} restName={rest.restName} restTime={rest.restTime} />;
+            return <RestElement drag={drag} restName={rest.restName} restTime={rest.restTime} key={rest.key}/>;
         }
         return <View/>;
     }
     
     return (
         <View style={{flex: 1}}>
+            {/* <AddExerciseModal visible={addExerciseModalVisisble} setVisibleFalse={() => setAddExerciseModalVisisble(false)} saveActionCallback={}/> */}
             <View style={{flexDirection: "row", justifyContent: "center"}}>
                 <TextInput  style={{paddingVertical: 8, paddingHorizontal: 4, margin: 7, borderBottomColor: "black", borderBottomWidth: 1}} value={titleValue} placeholder={titleValue ? "" : "Enter Workout Title"} onChangeText={onChangeTitle}/>
                 <TouchableOpacity  style={{padding: 12, margin: 7, backgroundColor: ButtonColor}} onPress={onSave}><Text>Save Workout</Text></TouchableOpacity>
