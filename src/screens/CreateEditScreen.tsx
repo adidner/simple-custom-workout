@@ -20,12 +20,21 @@ export default function CreateEdit(){
     const [titleValue, onChangeTitle] = useState(currentWorkout != undefined ? currentWorkout.workoutName : "");
     const [exerciseRestPlaylist, onChangeExerciseRestPlaylist] = useState(currentWorkout != undefined ? currentWorkout.exerciseList : []);
     const [addExerciseModalVisisble, setAddExerciseModalVisisble] = useState(false);
+    const [currentEditExercise, setCurrentEditExercise] = useState({exerciseName: "", exerciseReps: 0, key:createGuid()});
     const [addRestModalVisisble, setAddRestModalVisisble] = useState(false);
-    
 
-    function onSave(){
+    function onSaveExercise(element: exerciseElement){
         //override state in redux store, using local state playlist obj to override the one at the index we're talking about
     }
+
+    function onSaveRest(element: restElement){
+
+    }
+
+    function onSave(){
+
+    }
+
 
     function onAddExercise(){
 
@@ -38,7 +47,7 @@ export default function CreateEdit(){
     let renderItem = (item: any, index: any, drag: any, isActive: any ) => {
         if((item as exerciseElement).exerciseName){   
             var exercise = item as exerciseElement
-            return <ExerciseElement drag={drag} exerciseName={exercise.exerciseName} exerciseReps={exercise.exerciseReps} key={exercise.key}/>;
+            return <ExerciseElement drag={drag} exerciseName={exercise.exerciseName} exerciseReps={exercise.exerciseReps} key={exercise.key} openModal={() => setAddExerciseModalVisisble(true)} closeModal={() => setAddExerciseModalVisisble(false)} setCurrentEditExercise={setCurrentEditExercise}/>;
         }
         else if((item as restElement).restTime){
             var rest = item as restElement
@@ -49,7 +58,7 @@ export default function CreateEdit(){
     
     return (
         <View style={{flex: 1}}>
-            {/* <AddExerciseModal visible={addExerciseModalVisisble} setVisibleFalse={() => setAddExerciseModalVisisble(false)} saveActionCallback={}/> */}
+            <AddExerciseModal existingExercise={currentEditExercise} visible={addExerciseModalVisisble} setVisibleFalse={() => setAddExerciseModalVisisble(false)} saveActionCallback={(exerciseElement) => onSaveExercise(exerciseElement)}/>
             <View style={{flexDirection: "row", justifyContent: "center"}}>
                 <TextInput  style={{paddingVertical: 8, paddingHorizontal: 4, margin: 7, borderBottomColor: "black", borderBottomWidth: 1}} value={titleValue} placeholder={titleValue ? "" : "Enter Workout Title"} onChangeText={onChangeTitle}/>
                 <TouchableOpacity  style={{padding: 12, margin: 7, backgroundColor: ButtonColor}} onPress={onSave}><Text>Save Workout</Text></TouchableOpacity>
@@ -69,8 +78,6 @@ export default function CreateEdit(){
                 />
             </View>
             
-
-             {/* <TestComponent/> */}
         </View>
     );
 }
@@ -81,6 +88,13 @@ function ExerciseElement(props: exerciseElement){
 
     function onEditExercise(){
         //pull up the modal and pre-populate it
+        if(props.openModal != undefined){
+            props.openModal();
+        }
+        if(props.setCurrentEditExercise != undefined){
+            props.setCurrentEditExercise(props);
+        }
+
     }
 
     function onDeleteExercise(){
