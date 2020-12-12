@@ -16,6 +16,9 @@ export interface exerciseElement{
     exerciseReps: number;
     drag?: () => void;
     key: string;
+    openModal?: () => void;
+    closeModal?: () => void;
+    setCurrentEditExercise?: (element : exerciseElement) => void;
 }
 
 export interface restElement{
@@ -23,6 +26,8 @@ export interface restElement{
     restTime: number;
     drag?: () => void;
     key: string;
+    openModal?: () => void;
+    closeModal?: () => void;
 }
 
 export interface restAndExerciseElement{
