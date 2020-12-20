@@ -43,16 +43,18 @@ export default function AddExerciseModal(props: props){
             <View style={styles.centeredView}>    
                 <View style={styles.modalView}>
                     <Text style={styles.modalTitle}>Add Exercise</Text>
-                    <View style={styles.modalRow}>
-                        <Text style={styles.modalText}>Name:</Text>
-                        <TextInput style={styles.modalInput}>{props.existingExercise?.exerciseName}</TextInput>
-                    </View>
                     
                     <View style={styles.modalRow}>
-                        <Text style={styles.modalText}>Reps:</Text>
-                        <TextInput style={styles.modalInput}>{props.existingExercise?.exerciseReps}</TextInput>
+                        <View style={styles.modalColumn}>
+                            <Text style={styles.modalTextPaddingRight}>Name:</Text>
+                            <Text style={styles.modalTextPaddingRight}>Reps:</Text>
+                        </View>
+                        
+                        <View style={styles.modalColumn}>
+                            <TextInput style={styles.modalInput}>{props.existingExercise?.exerciseName}</TextInput>
+                            <TextInput style={styles.modalInput}>{props.existingExercise?.exerciseReps}</TextInput>
+                        </View>
                     </View>
-                    
                     <View style={styles.modalRow}>
                         <TouchableOpacity style={styles.modalButton} onPress={onSave}><Text>Save</Text></TouchableOpacity>
                         <TouchableOpacity style={styles.modalButton} onPress={onCancel}><Text>Cancel</Text></TouchableOpacity>

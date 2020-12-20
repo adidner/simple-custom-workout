@@ -28,6 +28,7 @@ export interface restElement{
     key: string;
     openModal?: () => void;
     closeModal?: () => void;
+    setCurrentEditRest?: (element : restElement) => void;
 }
 
 export interface restAndExerciseElement{

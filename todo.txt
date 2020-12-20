@@ -2,10 +2,12 @@ NEXT:
 -̶ H̶o̶o̶k̶ u̶p̶ n̶a̶v̶i̶g̶a̶t̶i̶o̶n̶ f̶r̶o̶m̶ C̶r̶e̶a̶t̶e̶S̶t̶a̶r̶t̶S̶c̶r̶e̶e̶n̶ t̶o̶ C̶r̶e̶a̶t̶e̶E̶d̶i̶t̶S̶c̶r̶e̶e̶n̶
 -̶ H̶o̶o̶k̶ u̶p̶ r̶e̶d̶u̶x̶ s̶o̶ i̶t̶ p̶o̶p̶u̶l̶a̶t̶e̶s̶ c̶o̶r̶r̶e̶c̶t̶l̶y̶ a̶n̶d̶ d̶o̶ t̶h̶e̶ c̶o̶r̶r̶e̶c̶t̶ d̶i̶s̶p̶a̶t̶c̶h̶e̶s̶ a̶n̶d̶ s̶u̶c̶h̶
 -̶ M̶a̶k̶e̶ t̶h̶e̶ U̶I̶ p̶r̶e̶t̶t̶i̶e̶r̶ i̶n̶ t̶e̶r̶m̶s̶ o̶f̶ s̶p̶a̶c̶i̶n̶g̶ a̶n̶d̶ s̶u̶c̶h̶ (̶m̶a̶r̶g̶i̶n̶s̶ a̶n̶d̶ p̶a̶d̶d̶i̶n̶g̶)̶
-- Make the save button actually work and dispatch things correctly
 -̶ I̶C̶O̶N̶S̶
 -̶ D̶r̶a̶g̶g̶a̶b̶l̶e̶ l̶i̶s̶t̶  !̶!̶!̶!̶!̶!̶!̶!̶!̶!̶ C̶o̶n̶t̶i̶n̶u̶e̶ t̶o̶ t̶o̶u̶b̶l̶e̶ s̶h̶o̶o̶t̶ o̶r̶ s̶w̶i̶t̶c̶h̶ t̶o̶ d̶y̶n̶a̶m̶i̶c̶ v̶e̶r̶s̶i̶o̶n̶ i̶n̶ l̶i̶r̶b̶a̶r̶y̶ i̶f̶ t̶o̶ d̶i̶f̶f̶i̶c̶u̶l̶t̶
-- Exercise and rest modals and corresponding state for visibility and state for adding elements to the list of stuff
+-̶ E̶x̶e̶r̶c̶i̶s̶e̶ a̶n̶d̶ r̶e̶s̶t̶ m̶o̶d̶a̶l̶s̶ a̶n̶d̶ c̶o̶r̶r̶e̶s̶p̶o̶n̶d̶i̶n̶g̶ s̶t̶a̶t̶e̶ f̶o̶r̶ v̶i̶s̶i̶b̶i̶l̶i̶t̶y̶ a̶n̶d̶ s̶t̶a̶t̶e̶ f̶o̶r̶ a̶d̶d̶i̶n̶g̶ e̶l̶e̶m̶e̶n̶t̶s̶ t̶o̶ t̶h̶e̶ l̶i̶s̶t̶ o̶f̶ s̶t̶u̶f̶f̶
+    -̶ t̶a̶k̶e̶ e̶x̶e̶r̶c̶i̶s̶e̶ m̶o̶d̶a̶l̶ a̶n̶d̶ e̶i̶t̶h̶e̶r̶ m̶a̶k̶e̶ w̶o̶r̶k̶ o̶r̶ g̶e̶t̶ i̶t̶ t̶o̶ b̶e̶ t̶h̶e̶ s̶a̶m̶e̶ a̶s̶ a̶d̶d̶ r̶e̶s̶t̶M̶o̶d̶a̶l̶
+- Rest modal validation, 0 - 59
+- Make the save button actually work and dispatch things correctly
 - Also editing and how that should work in terms of dealing with something that already has existed
 
 
