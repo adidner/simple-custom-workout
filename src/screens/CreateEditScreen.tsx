@@ -12,6 +12,7 @@ import { ButtonColor } from '../../constants/colorStuff';
 import DraggableFlatList from "react-native-draggable-flatlist";
 import TestComponent from "./TestComponent";
 import AddExerciseModal from '../components/AddExerciseModal';
+import AddRestModal from '../components/AddRestModal';
 
 export default function CreateEdit(){
 
@@ -22,6 +23,7 @@ export default function CreateEdit(){
     const [addExerciseModalVisisble, setAddExerciseModalVisisble] = useState(false);
     const [currentEditExercise, setCurrentEditExercise] = useState({exerciseName: "", exerciseReps: 0, key:createGuid()});
     const [addRestModalVisisble, setAddRestModalVisisble] = useState(false);
+    const [currentEditRest, setCurrentEditRest] = useState({restTime: 0, key:createGuid()});
 
     function onSaveExercise(element: exerciseElement){
         //override state in redux store, using local state playlist obj to override the one at the index we're talking about
@@ -51,7 +53,7 @@ export default function CreateEdit(){
         }
         else if((item as restElement).restTime){
             var rest = item as restElement
-            return <RestElement drag={drag} restName={rest.restName} restTime={rest.restTime} key={rest.key}/>;
+            return <RestElement drag={drag} restName={rest.restName} restTime={rest.restTime} key={rest.key} openModal={() => setAddRestModalVisisble(true)} closeModal={() => setAddRestModalVisisble(false)} setCurrentEditRest={setCurrentEditRest}/>;
         }
         return <View/>;
     }
@@ -59,6 +61,8 @@ export default function CreateEdit(){
     return (
         <View style={{flex: 1}}>
             <AddExerciseModal existingExercise={currentEditExercise} visible={addExerciseModalVisisble} setVisibleFalse={() => setAddExerciseModalVisisble(false)} saveActionCallback={(exerciseElement) => onSaveExercise(exerciseElement)}/>
+            <AddRestModal existingRest={currentEditRest} visible={addRestModalVisisble} setVisibleFalse={() => setAddRestModalVisisble(false)} saveActionCallback={(restElement) => onSaveRest(restElement)}/>
+            
             <View style={{flexDirection: "row", justifyContent: "center"}}>
                 <TextInput  style={{paddingVertical: 8, paddingHorizontal: 4, margin: 7, borderBottomColor: "black", borderBottomWidth: 1}} value={titleValue} placeholder={titleValue ? "" : "Enter Workout Title"} onChangeText={onChangeTitle}/>
                 <TouchableOpacity  style={{padding: 12, margin: 7, backgroundColor: ButtonColor}} onPress={onSave}><Text>Save Workout</Text></TouchableOpacity>
@@ -120,6 +124,12 @@ function RestElement(props: restElement){
 
     function onEditRest(){
         //pull up modal pre-populated
+        if(props.openModal != undefined){
+            props.openModal();
+        }
+        if(props.setCurrentEditRest != undefined){
+            props.setCurrentEditRest(props);
+        }
     }
 
     function onDeleteRest(){

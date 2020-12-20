@@ -28,6 +28,7 @@ export const styles = StyleSheet.create({
     modalRow: {
         flexDirection: "row",
         paddingBottom: 5,
+        alignItems: 'center',
     },
 
     modalButton: {
@@ -42,16 +43,33 @@ export const styles = StyleSheet.create({
         paddingBottom: 10,
     },
 
-    modalText: {
+    modalTextPaddingRight: {
         fontSize: 17,
-        paddingRight: 4,
+        paddingRight: 7,
+        padding: 1,
     },
 
     modalInput: {
         fontSize: 17,
         borderBottomColor: 'black',
         borderBottomWidth: 2,
-    }
+    },
+
+    modalText: {
+      fontSize: 17,
+      padding: 1,
+    },
+
+    modalInputTimer: {
+      fontSize: 17,
+      borderBottomColor: 'black',
+      borderBottomWidth: 2,
+      textAlign: 'center',
+    },
+
+    modalColumn: {
+      flexDirection: 'column',
+    },
 
 
     
