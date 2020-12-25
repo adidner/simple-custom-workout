@@ -33,7 +33,6 @@ export default function AddRestModal(props: props){
         props.setVisibleFalse();
     }
 
-    //TODO: fix, not working
     function onChangeMinutes(text: string){
         var numberVersion: number = Number(text);
         if(numberVersion >= 0 && numberVersion <= 59){
@@ -41,10 +40,12 @@ export default function AddRestModal(props: props){
         }
     }
 
-    //TODO: fix, not working
     function onChangeSeconds(text: string){
         var numberVersion: number = Number(text);
+        console.log("numberVersion", numberVersion);
         if(numberVersion >= 0 && numberVersion <= 59){
+            
+            console.log("in setter");
             setSeconds(numberVersion);
         }
     }
@@ -62,14 +63,14 @@ export default function AddRestModal(props: props){
                     
                     <View style={styles.modalRow}>
                         <View style={styles.modalColumn}>
-                            <Text style={styles.modalText}>Rest:</Text>
+                            <Text style={styles.modalTextRest}>Rest:</Text>
                         </View>
                         
                         <View style={styles.modalColumn}>
                             <View style={styles.modalRow}>
-                                <TextInput style={styles.modalInputTimer} keyboardType={'numeric'} onChangeText={(text) => onChangeMinutes(text)}>{minutes}</TextInput>
+                                <TextInput style={styles.modalInputTimer} keyboardType={'numeric'} onChangeText={(text) => onChangeMinutes(text)} value={minutes.toString()}/>
                                 <Text style={styles.modalText}>:</Text>
-                                <TextInput style={styles.modalInputTimer} keyboardType={'numeric'} onChangeText={(text) => onChangeSeconds(text)}>{seconds}</TextInput>
+                                <TextInput style={styles.modalInputTimer} keyboardType={'numeric'} onChangeText={(text) => onChangeSeconds(text)} value={seconds.toString()}/>
                             </View>
                         </View>
                     </View>

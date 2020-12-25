@@ -6,6 +6,7 @@ export interface actionInterface{
     exerciseIndex: number;
     allWorkouts: workoutPlaylist[];
     currentAllWorkoutsIndex: number;
+    workout: workoutPlaylist;
 }
 
 
@@ -13,6 +14,7 @@ export const SET_CURRENT_WORKOUT = "SET_CURRENT_WORKOUT";
 export const SET_EXERCISE_INDEX = "SET_EXERCISE_INDEX";
 export const SET_ALL_WORKOUTS = "SET_ALL_WORKOUTS";
 export const SET_CURRENT_ALL_WORKOUTS_INDEX = "SET_CURRENT_ALL_WORKOUTS_INDEX";
+export const OVERRIDE_OR_APPEND_ALL_WORKOUTS = "OVERRIDE_OR_APPEND_ALL_WORKOUTS";
 
 
 export function setCurrentWorkoutByIndex(currentWorkoutIndex: number){
@@ -29,4 +31,8 @@ export function setAllWorkouts(allWorkouts: workoutPlaylist[]){
 
 export function setCurrentAllWorkoutsIndex(currentAllWorkoutsIndex: number){
     return {type: SET_CURRENT_ALL_WORKOUTS_INDEX, currentAllWorkoutsIndex}
+}
+
+export function overrideOrAppendAllWorkouts(workout: workoutPlaylist){
+    return {type: OVERRIDE_OR_APPEND_ALL_WORKOUTS, workout}
 }

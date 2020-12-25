@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {FlatList, ImagePropTypes, Text, TextInput, View} from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { exerciseElement, restAndExerciseElement, restElement, workoutPlaylist } from '../../constants/interfaces';
 import { getAllWorkouts, getCurrentAllWorkoutsIndex, getCurrentWorkout } from '../../redux/selectors';
 import { createGuid, secondsToDisplayTimeString } from '../Utils';
@@ -13,10 +13,11 @@ import DraggableFlatList from "react-native-draggable-flatlist";
 import TestComponent from "./TestComponent";
 import AddExerciseModal from '../components/AddExerciseModal';
 import AddRestModal from '../components/AddRestModal';
+import { overrideOrAppendAllWorkouts } from '../../redux/actions';
 
 export default function CreateEdit(){
 
-    var currentWorkout: workoutPlaylist | undefined = useSelector(getCurrentWorkout);
+    var currentWorkout: workoutPlaylist = useSelector(getCurrentWorkout);
     console.log(currentWorkout);
     const [titleValue, onChangeTitle] = useState(currentWorkout != undefined ? currentWorkout.workoutName : "");
     const [exerciseRestPlaylist, onChangeExerciseRestPlaylist] = useState(currentWorkout != undefined ? currentWorkout.exerciseList : []);
@@ -25,8 +26,25 @@ export default function CreateEdit(){
     const [addRestModalVisisble, setAddRestModalVisisble] = useState(false);
     const [currentEditRest, setCurrentEditRest] = useState({restTime: 0, key:createGuid()});
 
+    const dispatch = useDispatch()
+
+    //TODO: test this, because it probably doesn't work, like the entire function including the redux call
     function onSaveExercise(element: exerciseElement){
-        //override state in redux store, using local state playlist obj to override the one at the index we're talking about
+        //go into currentWorkout look by GUID, if ours matches one, override it with this
+        let replaced: boolean = false;
+        for(let current of currentWorkout.exerciseList){
+            if(current.key == element.key){
+                current = element;
+                replaced = true;
+            }
+        }
+        //if it doesn't match any add it to the end (or beginning idk)
+        if(!replaced){
+            currentWorkout.exerciseList.push(element);
+        }
+        //make and call a function that does something similar but on the allWorkouts level rather than the exercisePlaylist level
+        
+        dispatch(overrideOrAppendAllWorkouts(currentWorkout));
     }
 
     function onSaveRest(element: restElement){
