@@ -6,8 +6,9 @@ NEXT:
 -̶ D̶r̶a̶g̶g̶a̶b̶l̶e̶ l̶i̶s̶t̶  !̶!̶!̶!̶!̶!̶!̶!̶!̶!̶ C̶o̶n̶t̶i̶n̶u̶e̶ t̶o̶ t̶o̶u̶b̶l̶e̶ s̶h̶o̶o̶t̶ o̶r̶ s̶w̶i̶t̶c̶h̶ t̶o̶ d̶y̶n̶a̶m̶i̶c̶ v̶e̶r̶s̶i̶o̶n̶ i̶n̶ l̶i̶r̶b̶a̶r̶y̶ i̶f̶ t̶o̶ d̶i̶f̶f̶i̶c̶u̶l̶t̶
 -̶ E̶x̶e̶r̶c̶i̶s̶e̶ a̶n̶d̶ r̶e̶s̶t̶ m̶o̶d̶a̶l̶s̶ a̶n̶d̶ c̶o̶r̶r̶e̶s̶p̶o̶n̶d̶i̶n̶g̶ s̶t̶a̶t̶e̶ f̶o̶r̶ v̶i̶s̶i̶b̶i̶l̶i̶t̶y̶ a̶n̶d̶ s̶t̶a̶t̶e̶ f̶o̶r̶ a̶d̶d̶i̶n̶g̶ e̶l̶e̶m̶e̶n̶t̶s̶ t̶o̶ t̶h̶e̶ l̶i̶s̶t̶ o̶f̶ s̶t̶u̶f̶f̶
     -̶ t̶a̶k̶e̶ e̶x̶e̶r̶c̶i̶s̶e̶ m̶o̶d̶a̶l̶ a̶n̶d̶ e̶i̶t̶h̶e̶r̶ m̶a̶k̶e̶ w̶o̶r̶k̶ o̶r̶ g̶e̶t̶ i̶t̶ t̶o̶ b̶e̶ t̶h̶e̶ s̶a̶m̶e̶ a̶s̶ a̶d̶d̶ r̶e̶s̶t̶M̶o̶d̶a̶l̶
-- Rest modal validation, 0 - 59
+-̶ R̶e̶s̶t̶ m̶o̶d̶a̶l̶ v̶a̶l̶i̶d̶a̶t̶i̶o̶n̶,̶ 0̶ -̶ 5̶9̶
 - Make the save button actually work and dispatch things correctly
+    - function written but probably doesn't work (also the redux portion)
 - Also editing and how that should work in terms of dealing with something that already has existed
 
 
@@ -68,3 +69,4 @@ Bonus stuff
 - Add a 3rd type, exercise reps, exercise time, rest (for those who want to do like 30 seconds of planks or whatever in a similar format to rest)
 - Add +20 seconds to rest buttom
 - Sound affects on finish of an exercise and on start of exercise, with settings to turn off or change?
+- Make the allWorkouts playlist a draggable playlist (should probably add keys and use those instead of indexs when trying to save save new exercises to a workout via redux)

@@ -1,6 +1,6 @@
 export interface reduxState{
     exerciseIndex?: number;
-    currentWorkout?: workoutPlaylist;
+    currentWorkout: workoutPlaylist;
     allWorkouts: workoutPlaylist[];
     currentAllWorkoutsIndex?: number;
 }

@@ -1,6 +1,9 @@
 
 import {StyleSheet,} from 'react-native';
-import {ButtonColor} from '../constants/colorStuff'
+import {ButtonColor} from '../constants/colorStuff';
+
+const titleFontSize: number = 26;
+const normalFontSize: number = 18;
 
 export const styles = StyleSheet.create({
     centeredView: {
@@ -38,33 +41,39 @@ export const styles = StyleSheet.create({
     },
 
     modalTitle: {
-        fontSize: 26,
+        fontSize: titleFontSize,
         fontWeight: "900",
         paddingBottom: 10,
     },
 
     modalTextPaddingRight: {
-        fontSize: 17,
+        fontSize: normalFontSize,
         paddingRight: 7,
         padding: 1,
     },
 
     modalInput: {
-        fontSize: 17,
+        fontSize: normalFontSize,
         borderBottomColor: 'black',
         borderBottomWidth: 2,
     },
 
     modalText: {
-      fontSize: 17,
+      fontSize: normalFontSize,
       padding: 1,
     },
 
+    modalTextRest: {
+      fontSize: normalFontSize,
+      padding: 1,
+      paddingRight: 5,
+    },
+
     modalInputTimer: {
-      fontSize: 17,
+      fontSize: normalFontSize,
       borderBottomColor: 'black',
       borderBottomWidth: 2,
-      textAlign: 'center',
+      textAlign: 'center'
     },
 
     modalColumn: {
