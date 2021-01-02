@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {Text, Modal, View, TouchableOpacity,TextInput, } from 'react-native';
 import { exerciseElement } from '../../constants/interfaces';
 import { createGuid } from '../Utils';
@@ -8,24 +8,32 @@ interface props {
     visible: boolean;
     setVisibleFalse: () => void;
     saveActionCallback: (element: exerciseElement) => void;
-    existingExercise?: exerciseElement
+    existingExercise: exerciseElement
 }
 
 export default function AddExerciseModal(props: props){
-    let existingName: string = props.existingExercise != undefined ? props.existingExercise.exerciseName : "";
-    const [exerciseName, setExerciseName] = useState(existingName);
 
-    let existingReps: string = props.existingExercise != undefined ? props.existingExercise.exerciseReps.toString() : "";
-    const [exerciseReps, setExerciseReps] = useState(existingReps);
-    
+    //TODO, key is undefined here
+    console.log("props", props);
+
+    const [exerciseName, setExerciseName] = useState(props.existingExercise.exerciseName);
+
+    const [exerciseReps, setExerciseReps] = useState(props.existingExercise.exerciseReps.toString());
+
+    useEffect(() => {
+        setExerciseName(props.existingExercise.exerciseName);
+        setExerciseReps(props.existingExercise.exerciseReps.toString());
+      }, [props]);
 
     function onSave(){
         let newExerciseElement: exerciseElement = {
             exerciseName: exerciseName,
             exerciseReps: Number(exerciseReps),
-            key: createGuid(),
+            //TODO, key is undefined here, which means in its onsave it can't match keys
+            key: props.existingExercise.key,
         };
         props.saveActionCallback(newExerciseElement);
+        props.setVisibleFalse();
     }
 
     function onCancel(){
@@ -51,8 +59,8 @@ export default function AddExerciseModal(props: props){
                         </View>
                         
                         <View style={styles.modalColumn}>
-                            <TextInput style={styles.modalInput}>{props.existingExercise?.exerciseName}</TextInput>
-                            <TextInput style={styles.modalInput}>{props.existingExercise?.exerciseReps}</TextInput>
+                            <TextInput style={styles.modalInput} onChangeText={text => setExerciseName(text)} value={exerciseName}/>
+                            <TextInput style={styles.modalInput} onChangeText={setExerciseReps} value={exerciseReps}/>
                         </View>
                     </View>
                     <View style={styles.modalRow}>

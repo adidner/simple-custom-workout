@@ -18,7 +18,7 @@ import { overrideOrAppendAllWorkouts } from '../../redux/actions';
 export default function CreateEdit(){
 
     var currentWorkout: workoutPlaylist = useSelector(getCurrentWorkout);
-    console.log(currentWorkout);
+    //console.log(currentWorkout);
     const [titleValue, onChangeTitle] = useState(currentWorkout != undefined ? currentWorkout.workoutName : "");
     const [exerciseRestPlaylist, onChangeExerciseRestPlaylist] = useState(currentWorkout != undefined ? currentWorkout.exerciseList : []);
     const [addExerciseModalVisisble, setAddExerciseModalVisisble] = useState(false);
@@ -32,8 +32,13 @@ export default function CreateEdit(){
     function onSaveExercise(element: exerciseElement){
         //go into currentWorkout look by GUID, if ours matches one, override it with this
         let replaced: boolean = false;
+        console.log("element", element)
         for(let current of currentWorkout.exerciseList){
+                
+            //console.log("current.key", current.key);
+            //console.log("elment.key ", element.key);
             if(current.key == element.key){
+                //console.log("in if");
                 current = element;
                 replaced = true;
             }
@@ -57,11 +62,14 @@ export default function CreateEdit(){
 
 
     function onAddExercise(){
+        setCurrentEditExercise({exerciseReps: 0,exerciseName: "",key: createGuid()});
+        setAddExerciseModalVisisble(true);
 
     }
 
     function onAddRest(){
-
+        setCurrentEditRest({restTime: 0, key: createGuid()});
+        setAddRestModalVisisble(true);
     }
 
     let renderItem = (item: any, index: any, drag: any, isActive: any ) => {
@@ -114,7 +122,8 @@ function ExerciseElement(props: exerciseElement){
             props.openModal();
         }
         if(props.setCurrentEditExercise != undefined){
-            props.setCurrentEditExercise(props);
+            console.log("key", props.key);
+            props.setCurrentEditExercise({exerciseReps: props.exerciseReps, exerciseName: props.exerciseName, key: props.key});
         }
 
     }
