@@ -6,7 +6,7 @@ const initialState: reduxState = {
     currentWorkout: {index:-1, workoutName:"error", exerciseList:[]},
     exerciseIndex: undefined,
     //we should grab all workouts from memory, and we should re-index things upon retrieval and whenever we delete an obj
-    allWorkouts: [{index: 0, workoutName: "workout1name", exerciseList: [{exerciseName: "HSPUs", exerciseReps: 12, key:createGuid()},{restTime: 180, key:createGuid()}, {exerciseName: "Pull UPs", exerciseReps: 12, key:createGuid()}]},{index: 1, workoutName: "workout2name", exerciseList: [{restTime: 20, key:createGuid()}, {exerciseName: "Pullups", exerciseReps: 15, key:createGuid()},]}, {index: 2, workoutName: "workout3name", exerciseList: []}],
+    allWorkouts: [{index: 0, workoutName: "workout1name", exerciseList: [{exerciseName: "HSPUs", exerciseReps: 12, key:createGuid()},{restTime: 187, key:createGuid()}, {exerciseName: "Pull UPs", exerciseReps: 12, key:createGuid()}]},{index: 1, workoutName: "workout2name", exerciseList: [{restTime: 20, key:createGuid()}, {exerciseName: "Pullups", exerciseReps: 15, key:createGuid()},]}, {index: 2, workoutName: "workout3name", exerciseList: []}],
     currentAllWorkoutsIndex: undefined,
 };
   

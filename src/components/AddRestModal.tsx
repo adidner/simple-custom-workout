@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {Text, Modal, View, TouchableOpacity,TextInput, } from 'react-native';
 import { restElement } from '../../constants/interfaces';
 import { createGuid } from '../Utils';
@@ -8,25 +8,27 @@ interface props {
     visible: boolean;
     setVisibleFalse: () => void;
     saveActionCallback: (element: restElement) => void;
-    existingRest?: restElement
+    existingRest: restElement
 }
 
 export default function AddRestModal(props: props){
 
-    let existingRest: string = props.existingRest != undefined ? props.existingRest.restTime.toString() : "";
-    const [exerciseRest, setExerciseRest] = useState(existingRest);
-
     
-    const [minutes, setMinutes] = useState(0);
-    const [seconds, setSeconds] = useState(0);
+    const [minutes, setMinutes] = useState(props.existingRest.restTime / 60);
+    const [seconds, setSeconds] = useState(props.existingRest.restTime % 60);
     
+    useEffect(() => {
+        setMinutes(Math.floor(props.existingRest.restTime / 60));
+        setSeconds(props.existingRest.restTime % 60);
+      }, [props]);
 
     function onSave(){
         let newRestElement: restElement = {
-            restTime: Number(exerciseRest),
+            restTime: minutes * 60 + seconds,
             key: createGuid(),
         };
         props.saveActionCallback(newRestElement);
+        props.setVisibleFalse();
     }
 
     function onCancel(){
@@ -42,10 +44,10 @@ export default function AddRestModal(props: props){
 
     function onChangeSeconds(text: string){
         var numberVersion: number = Number(text);
-        console.log("numberVersion", numberVersion);
+        //console.log("numberVersion", numberVersion);
         if(numberVersion >= 0 && numberVersion <= 59){
             
-            console.log("in setter");
+            //console.log("in setter");
             setSeconds(numberVersion);
         }
     }
