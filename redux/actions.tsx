@@ -2,35 +2,35 @@ import { workoutPlaylist } from "../constants/interfaces";
 
 export interface actionInterface{
     type: string;
-    currentWorkoutIndex: number;
-    exerciseIndex: number;
+    currentWorkoutKey: string;
     allWorkouts: workoutPlaylist[];
     currentAllWorkoutsIndex: number;
     workout: workoutPlaylist;
+    newWorkout: workoutPlaylist;
 }
 
 
+export const SET_CURRENT_WORKOUT_BY_KEY = "SET_CURRENT_WORKOUT_BY_KEY";
+export const SET_CURRENT_WORKOUT_BLANK = "SET_CURRENT_WORKOUT_BLANK";
 export const SET_CURRENT_WORKOUT = "SET_CURRENT_WORKOUT";
-export const SET_EXERCISE_INDEX = "SET_EXERCISE_INDEX";
 export const SET_ALL_WORKOUTS = "SET_ALL_WORKOUTS";
 export const SET_CURRENT_ALL_WORKOUTS_INDEX = "SET_CURRENT_ALL_WORKOUTS_INDEX";
 export const OVERRIDE_OR_APPEND_ALL_WORKOUTS = "OVERRIDE_OR_APPEND_ALL_WORKOUTS";
 
-
-export function setCurrentWorkoutByIndex(currentWorkoutIndex: number){
-    return {type: SET_CURRENT_WORKOUT, currentWorkoutIndex}
+export function setCurrentWorkOutBlank(){
+    return {type: SET_CURRENT_WORKOUT_BLANK}
 }
 
-export function setExerciseIndex(exerciseIndex: number){
-    return {type: SET_EXERCISE_INDEX, exerciseIndex}
+export function setCurrentWorkout(newWorkout: workoutPlaylist){
+    return {type: SET_CURRENT_WORKOUT, newWorkout}
+}
+
+export function setCurrentWorkoutByKey(currentWorkoutKey: string){
+    return {type: SET_CURRENT_WORKOUT_BY_KEY, currentWorkoutKey}
 }
 
 export function setAllWorkouts(allWorkouts: workoutPlaylist[]){
     return {type: SET_ALL_WORKOUTS, allWorkouts}
-}
-
-export function setCurrentAllWorkoutsIndex(currentAllWorkoutsIndex: number){
-    return {type: SET_CURRENT_ALL_WORKOUTS_INDEX, currentAllWorkoutsIndex}
 }
 
 export function overrideOrAppendAllWorkouts(workout: workoutPlaylist){

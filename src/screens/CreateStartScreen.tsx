@@ -7,15 +7,18 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useSelector, useDispatch } from 'react-redux';
 import { getAllWorkouts } from '../../redux/selectors';
 import { workoutPlaylist } from '../../constants/interfaces';
-import { setCurrentAllWorkoutsIndex, setCurrentWorkoutByIndex } from '../../redux/actions';
+import { setCurrentWorkOutBlank, setCurrentWorkoutByKey } from '../../redux/actions';
 
 export default function CreateStart(props: any){
 
     //do async stuff to grab DATA array
-    var DATA: workoutPlaylist[] = useSelector(getAllWorkouts);
+    let DATA: workoutPlaylist[] = useSelector(getAllWorkouts);
+
+    const dispatch = useDispatch();
 
     function onCreateNewWorkout(){
         //go to other screen and have it be empty
+        dispatch(setCurrentWorkOutBlank());
         props.navigation.navigate('CreateEdit');
     }
 
@@ -28,7 +31,7 @@ export default function CreateStart(props: any){
                 ? <Text>No Workouts Saved</Text> 
                 : <FlatList
                     data={DATA}
-                    renderItem={({item}) => <WorkoutElement name={item.workoutName} navigation={props.navigation} index={item.index} />}
+                    renderItem={({item}) => <WorkoutElement name={item.workoutName} navigation={props.navigation} keyGUID={item.keyGUID}/>}
                     keyExtractor={item => item.workoutName}
                 />}
             </View>
@@ -38,7 +41,7 @@ export default function CreateStart(props: any){
     );
 }
 
-function WorkoutElement(props: {name:string, navigation: any, index: number}){
+function WorkoutElement(props: {name:string, navigation: any, keyGUID:string}){
 
     const dispatch = useDispatch();
 
@@ -46,9 +49,9 @@ function WorkoutElement(props: {name:string, navigation: any, index: number}){
         //delete from memory and then reload from memory
     }
     
-    function onEdit(index: number){
+    function onEdit(){
         //go to other screen and populate with that workout
-        dispatch(setCurrentWorkoutByIndex(index));
+        dispatch(setCurrentWorkoutByKey(props.keyGUID));
         props.navigation.navigate('CreateEdit');
     }
     
@@ -60,7 +63,7 @@ function WorkoutElement(props: {name:string, navigation: any, index: number}){
         <TouchableOpacity onPress={onStartWorkout} style={{flexDirection: "row",  marginVertical: 10, padding: 12, flex: 1, backgroundColor: "purple", alignItems:"center", justifyContent:'space-between'}}>
             <View><Text style={{fontSize: MediumFontSize}}>{props.name}</Text></View>
             <View style={{flexDirection: "row"}}>
-                <TouchableOpacity onPress={() => onEdit(props.index)} style={{paddingHorizontal:7}}><View style={{backgroundColor: ButtonColor, padding: 12}}><MaterialIcons name="mode-edit" size={24} color="black" /></View></TouchableOpacity>
+                <TouchableOpacity onPress={() => onEdit()} style={{paddingHorizontal:7}}><View style={{backgroundColor: ButtonColor, padding: 12}}><MaterialIcons name="mode-edit" size={24} color="black" /></View></TouchableOpacity>
                 <TouchableOpacity onPress={onDelete} style={{paddingHorizontal:7}}><View style={{backgroundColor: ButtonColor, padding: 12}}><MaterialCommunityIcons name="trash-can" size={24} color="black" /></View></TouchableOpacity>
             </View>
         </TouchableOpacity>

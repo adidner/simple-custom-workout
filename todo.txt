@@ -16,6 +16,13 @@ NEXT:
 
 
 
+
+UPDATES: 
+Create New Workout is working, 
+When editing the title of the title of an existing workout, the redux store seems to update but the when going back to the createstart page it doesn't seem to re-fresh the grab from the redux store
+
+
+
 CreateStart
 - Loading icon for async storage grab
 - Async storage save, use specific pattern

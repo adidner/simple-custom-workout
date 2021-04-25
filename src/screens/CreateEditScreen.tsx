@@ -1,97 +1,112 @@
 import React, { useState } from 'react';
-import {FlatList, ImagePropTypes, Text, TextInput, View} from 'react-native';
+import { Text, TextInput, View} from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useDispatch, useSelector } from 'react-redux';
-import { exerciseElement, restAndExerciseElement, restElement, workoutPlaylist } from '../../constants/interfaces';
-import { getAllWorkouts, getCurrentAllWorkoutsIndex, getCurrentWorkout } from '../../redux/selectors';
+import { exerciseElement, restElement, workoutPlaylist } from '../../constants/interfaces';
+import { getCurrentWorkout } from '../../redux/selectors';
 import { createGuid, secondsToDisplayTimeString } from '../Utils';
 import { Entypo } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons'; 
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { ButtonColor } from '../../constants/colorStuff';
 import DraggableFlatList from "react-native-draggable-flatlist";
-import TestComponent from "./TestComponent";
 import AddExerciseModal from '../components/AddExerciseModal';
 import AddRestModal from '../components/AddRestModal';
-import { overrideOrAppendAllWorkouts } from '../../redux/actions';
+import { overrideOrAppendAllWorkouts, setCurrentWorkout} from '../../redux/actions';
 
-export default function CreateEdit(){
+export default function CreateEdit(props: any){
 
-    var currentWorkout: workoutPlaylist = useSelector(getCurrentWorkout);
-    //console.log(currentWorkout);
-    const [titleValue, onChangeTitle] = useState(currentWorkout != undefined ? currentWorkout.workoutName : "");
-    const [exerciseRestPlaylist, onChangeExerciseRestPlaylist] = useState(currentWorkout != undefined ? currentWorkout.exerciseList : []);
+    const newWorkout = useSelector(getCurrentWorkout);
+
+    // const [newWorkout, dispatch(setCurrentWorkout] = useState<workoutPlaylist>(initialNewWorkout);)
+    
     const [addExerciseModalVisisble, setAddExerciseModalVisisble] = useState(false);
-    const [currentEditExercise, setCurrentEditExercise] = useState({exerciseName: "", exerciseReps: 0, key:createGuid()});
+    const [currentEditExercise, setCurrentEditExercise] = useState({exerciseName: "", exerciseReps: 0, keyGUID:createGuid()});
     const [addRestModalVisisble, setAddRestModalVisisble] = useState(false);
-    const [currentEditRest, setCurrentEditRest] = useState({restTime: 0, key:createGuid()});
+    const [currentEditRest, setCurrentEditRest] = useState({restTime: 0, keyGUID:createGuid()});
 
     const dispatch = useDispatch()
 
     //TODO: test this, because it probably doesn't work, like the entire function including the redux call
     function onSaveExercise(element: exerciseElement){
-        //go into currentWorkout look by GUID, if ours matches one, override it with this
-        let replaced: boolean = false;
-        console.log("element", element)
-        for(let current of currentWorkout.exerciseList){
+        // //go into currentWorkout look by GUID, if ours matches one, override it with this
+        // let replaced: boolean = false;
+        // console.log("element", element)
+        // for(let current of newWorkout.exerciseList){
                 
-            //console.log("current.key", current.key);
-            //console.log("elment.key ", element.key);
-            if(current.key == element.key){
-                //console.log("in if");
-                current = element;
-                replaced = true;
-            }
-        }
-        //if it doesn't match any add it to the end (or beginning idk)
-        if(!replaced){
-            currentWorkout.exerciseList.push(element);
-        }
-        //make and call a function that does something similar but on the allWorkouts level rather than the exercisePlaylist level
+        //     //console.log("current.key", current.key);
+        //     //console.log("elment.key ", element.key);
+        //     if(current.key == element.key){
+        //         //console.log("in if");
+        //         current = element;
+        //         replaced = true;
+        //     }
+        // }
+        // //if it doesn't match any add it to the end (or beginning idk)
+        // if(!replaced){
+        //     newWorkout.exerciseList.push(element);
+        // }
+        // //make and call a function that does something similar but on the allWorkouts level rather than the exercisePlaylist level
         
-        dispatch(overrideOrAppendAllWorkouts(currentWorkout));
+        // dispatch(overrideOrAppendAllWorkouts(newWorkout));
     }
 
     function onSaveRest(element: restElement){
 
     }
 
-    function onSave(){
-
+    function onSaveWorkout(){
+        dispatch(overrideOrAppendAllWorkouts(newWorkout));
+        props.navigation.navigate('CreateStart');
     }
 
 
     function onAddExercise(){
-        setCurrentEditExercise({exerciseReps: 0,exerciseName: "",key: createGuid()});
+        setCurrentEditExercise({exerciseReps: 0,exerciseName: "",keyGUID: createGuid()});
         setAddExerciseModalVisisble(true);
 
     }
 
     function onAddRest(){
-        setCurrentEditRest({restTime: 0, key: createGuid()});
+        setCurrentEditRest({restTime: 0, keyGUID: createGuid()});
         setAddRestModalVisisble(true);
     }
 
     let renderItem = (item: any, index: any, drag: any, isActive: any ) => {
         if((item as exerciseElement).exerciseName){   
             var exercise = item as exerciseElement
-            return <ExerciseElement drag={drag} exerciseName={exercise.exerciseName} exerciseReps={exercise.exerciseReps} key={exercise.key} openModal={() => setAddExerciseModalVisisble(true)} closeModal={() => setAddExerciseModalVisisble(false)} setCurrentEditExercise={setCurrentEditExercise}/>;
+            return <ExerciseElement drag={drag} exerciseName={exercise.exerciseName} exerciseReps={exercise.exerciseReps} keyGUID={exercise.keyGUID} 
+            openModal={() => setAddExerciseModalVisisble(true)} closeModal={() => setAddExerciseModalVisisble(false)} setCurrentEditExercise={setCurrentEditExercise}/>;
         }
         else if((item as restElement).restTime){
             var rest = item as restElement
-            return <RestElement drag={drag} restName={rest.restName} restTime={rest.restTime} key={rest.key} openModal={() => setAddRestModalVisisble(true)} closeModal={() => setAddRestModalVisisble(false)} setCurrentEditRest={setCurrentEditRest}/>;
+            return <RestElement drag={drag} restName={rest.restName} restTime={rest.restTime} keyGUID={rest.keyGUID} openModal={() => setAddRestModalVisisble(true)} 
+            closeModal={() => setAddRestModalVisisble(false)} setCurrentEditRest={setCurrentEditRest}/>;
         }
         return <View/>;
     }
     
     return (
         <View style={{flex: 1}}>
-            <AddExerciseModal existingExercise={currentEditExercise} visible={addExerciseModalVisisble} setVisibleFalse={() => setAddExerciseModalVisisble(false)} saveActionCallback={(exerciseElement) => onSaveExercise(exerciseElement)}/>
-            <AddRestModal existingRest={currentEditRest} visible={addRestModalVisisble} setVisibleFalse={() => setAddRestModalVisisble(false)} saveActionCallback={(restElement) => onSaveRest(restElement)}/>
+            <AddExerciseModal 
+                existingExercise={currentEditExercise} visible={addExerciseModalVisisble} 
+                setVisibleFalse={() => setAddExerciseModalVisisble(false)} 
+                saveActionCallback={(exerciseElement) => onSaveExercise(exerciseElement)}
+            />
+            <AddRestModal 
+                existingRest={currentEditRest} 
+                visible={addRestModalVisisble} 
+                setVisibleFalse={() => setAddRestModalVisisble(false)} 
+                saveActionCallback={(restElement) => onSaveRest(restElement)}
+            />
             
             <View style={{flexDirection: "row", justifyContent: "center"}}>
-                <TextInput  style={{paddingVertical: 8, paddingHorizontal: 4, margin: 7, borderBottomColor: "black", borderBottomWidth: 1}} value={titleValue} placeholder={titleValue ? "" : "Enter Workout Title"} onChangeText={onChangeTitle}/>
-                <TouchableOpacity  style={{padding: 12, margin: 7, backgroundColor: ButtonColor}} onPress={onSave}><Text>Save Workout</Text></TouchableOpacity>
+                <TextInput  
+                    style={{paddingVertical: 8, paddingHorizontal: 4, margin: 7, borderBottomColor: "black", borderBottomWidth: 1}} 
+                    value={newWorkout.workoutName} placeholder={newWorkout.workoutName ? "" : "Enter Workout Title"} 
+                    onChangeText={(newTitle) => dispatch(setCurrentWorkout({workoutName: newTitle, exerciseList: newWorkout.exerciseList, keyGUID: newWorkout.keyGUID}))}
+                />
+                <TouchableOpacity  style={{padding: 12, margin: 7, backgroundColor: ButtonColor}} onPress={() => onSaveWorkout()}><Text>Save Workout</Text></TouchableOpacity>
             </View>
 
             <View style={{flexDirection: "row", justifyContent: "center"}}>
@@ -101,10 +116,10 @@ export default function CreateEdit(){
 
             <View style={{flex: 1}}>
                 <DraggableFlatList
-                    data={exerciseRestPlaylist}
+                    data={newWorkout.exerciseList}
                     renderItem={({ item, index, drag, isActive }) => renderItem( item, index, drag, isActive )}
-                    keyExtractor={item => {return item.key}}
-                    onDragEnd={({ data }) => onChangeExerciseRestPlaylist(data)}
+                    keyExtractor={item => {return item.keyGUID}}
+                    onDragEnd={({ data }) => dispatch(setCurrentWorkout({workoutName: newWorkout.workoutName, exerciseList: data, keyGUID: newWorkout.keyGUID}))}
                 />
             </View>
             
@@ -122,8 +137,7 @@ function ExerciseElement(props: exerciseElement){
             props.openModal();
         }
         if(props.setCurrentEditExercise != undefined){
-            console.log("key", props.key);
-            props.setCurrentEditExercise({exerciseReps: props.exerciseReps, exerciseName: props.exerciseName, key: props.key});
+            props.setCurrentEditExercise({exerciseReps: props.exerciseReps, exerciseName: props.exerciseName, keyGUID: props.keyGUID});
         }
 
     }

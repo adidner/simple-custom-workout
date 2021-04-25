@@ -14,7 +14,7 @@ interface props {
 export default function AddExerciseModal(props: props){
 
     //TODO, key is undefined here
-    console.log("props", props);
+    //console.log("props", props);
 
     const [exerciseName, setExerciseName] = useState(props.existingExercise.exerciseName);
 
@@ -30,10 +30,10 @@ export default function AddExerciseModal(props: props){
             exerciseName: exerciseName,
             exerciseReps: Number(exerciseReps),
             //TODO, key is undefined here, which means in its onsave it can't match keys
-            key: props.existingExercise.key,
+            keyGUID: props.existingExercise.keyGUID,
         };
-        props.saveActionCallback(newExerciseElement);
         props.setVisibleFalse();
+        props.saveActionCallback(newExerciseElement);
     }
 
     function onCancel(){
