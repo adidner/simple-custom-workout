@@ -9,17 +9,20 @@ NEXT:
 -̶ R̶e̶s̶t̶ m̶o̶d̶a̶l̶ v̶a̶l̶i̶d̶a̶t̶i̶o̶n̶,̶ 0̶ -̶ 5̶9̶
 -̶ a̶d̶d̶ e̶x̶e̶r̶c̶i̶s̶e̶ b̶u̶t̶t̶o̶n̶
 -̶ a̶d̶d̶ r̶e̶s̶t̶ b̶u̶t̶t̶o̶n̶
-- Make the save button actually work and dispatch things correctly
-    - somewhere in CreateEdit screen key of current element is getting set to undefined which is causing us to not be able to ovverride existing exercises with new values
-- Apply save logic to rest
-- Also editing and how that should work in terms of dealing with something that already has existed
+-̶ M̶a̶k̶e̶ t̶h̶e̶ s̶a̶v̶e̶ b̶u̶t̶t̶o̶n̶ a̶c̶t̶u̶a̶l̶l̶y̶ w̶o̶r̶k̶ a̶n̶d̶ d̶i̶s̶p̶a̶t̶c̶h̶ t̶h̶i̶n̶g̶s̶ c̶o̶r̶r̶e̶c̶t̶l̶y̶
+    -̶ s̶o̶m̶e̶w̶h̶e̶r̶e̶ i̶n̶ C̶r̶e̶a̶t̶e̶E̶d̶i̶t̶ s̶c̶r̶e̶e̶n̶ k̶e̶y̶ o̶f̶ c̶u̶r̶r̶e̶n̶t̶ e̶l̶e̶m̶e̶n̶t̶ i̶s̶ g̶e̶t̶t̶i̶n̶g̶ s̶e̶t̶ t̶o̶ u̶n̶d̶e̶f̶i̶n̶e̶d̶ w̶h̶i̶c̶h̶ i̶s̶ c̶a̶u̶s̶i̶n̶g̶ u̶s̶ t̶o̶ n̶o̶t̶ b̶e̶ a̶b̶l̶e̶ t̶o̶ o̶v̶v̶e̶r̶r̶i̶d̶e̶ e̶x̶i̶s̶t̶i̶n̶g̶ e̶x̶e̶r̶c̶i̶s̶e̶s̶ w̶i̶t̶h̶ n̶e̶w̶ v̶a̶l̶u̶e̶s̶
+-̶ A̶p̶p̶l̶y̶ s̶a̶v̶e̶ l̶o̶g̶i̶c̶ t̶o̶ a̶d̶d̶ r̶e̶s̶t̶
+-̶ A̶p̶p̶l̶y̶ s̶a̶v̶e̶ l̶o̶g̶i̶c̶ t̶o̶ a̶d̶d̶ e̶x̶e̶r̶c̶i̶s̶e̶
+- Apply save logic to edit 
+    - Also editing and how that should work in terms of dealing with something that already has existed
+- Delete workout
+- Delete exercise
 
 
 
-
-UPDATES: 
-Create New Workout is working, 
-When editing the title of the title of an existing workout, the redux store seems to update but the when going back to the createstart page it doesn't seem to re-fresh the grab from the redux store
+U̶P̶D̶A̶T̶E̶S̶:̶ 
+C̶r̶e̶a̶t̶e̶ N̶e̶w̶ W̶o̶r̶k̶o̶u̶t̶ i̶s̶ w̶o̶r̶k̶i̶n̶g̶,̶ 
+W̶h̶e̶n̶ e̶d̶i̶t̶i̶n̶g̶ t̶h̶e̶ t̶i̶t̶l̶e̶ o̶f̶ t̶h̶e̶ t̶i̶t̶l̶e̶ o̶f̶ a̶n̶ e̶x̶i̶s̶t̶i̶n̶g̶ w̶o̶r̶k̶o̶u̶t̶,̶ t̶h̶e̶ r̶e̶d̶u̶x̶ s̶t̶o̶r̶e̶ s̶e̶e̶m̶s̶ t̶o̶ u̶p̶d̶a̶t̶e̶ b̶u̶t̶ t̶h̶e̶ w̶h̶e̶n̶ g̶o̶i̶n̶g̶ b̶a̶c̶k̶ t̶o̶ t̶h̶e̶ c̶r̶e̶a̶t̶e̶s̶t̶a̶r̶t̶ p̶a̶g̶e̶ i̶t̶ d̶o̶e̶s̶n̶'̶t̶ s̶e̶e̶m̶ t̶o̶ r̶e̶-̶f̶r̶e̶s̶h̶ t̶h̶e̶ g̶r̶a̶b̶ f̶r̶o̶m̶ t̶h̶e̶ r̶e̶d̶u̶x̶ s̶t̶o̶r̶e̶
 
 
 

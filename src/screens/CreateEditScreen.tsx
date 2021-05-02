@@ -29,30 +29,15 @@ export default function CreateEdit(props: any){
 
     //TODO: test this, because it probably doesn't work, like the entire function including the redux call
     function onSaveExercise(element: exerciseElement){
-        // //go into currentWorkout look by GUID, if ours matches one, override it with this
-        // let replaced: boolean = false;
-        // console.log("element", element)
-        // for(let current of newWorkout.exerciseList){
-                
-        //     //console.log("current.key", current.key);
-        //     //console.log("elment.key ", element.key);
-        //     if(current.key == element.key){
-        //         //console.log("in if");
-        //         current = element;
-        //         replaced = true;
-        //     }
-        // }
-        // //if it doesn't match any add it to the end (or beginning idk)
-        // if(!replaced){
-        //     newWorkout.exerciseList.push(element);
-        // }
-        // //make and call a function that does something similar but on the allWorkouts level rather than the exercisePlaylist level
-        
-        // dispatch(overrideOrAppendAllWorkouts(newWorkout));
+        let nextWorkout: workoutPlaylist = newWorkout;
+        nextWorkout.exerciseList.push(element);
+        setNewWorkout(nextWorkout);
     }
 
     function onSaveRest(element: restElement){
-
+        let nextWorkout: workoutPlaylist = newWorkout;
+        nextWorkout.exerciseList.push(element);
+        setNewWorkout(nextWorkout);
     }
 
     function onSaveWorkout(){
@@ -64,7 +49,6 @@ export default function CreateEdit(props: any){
     function onAddExercise(){
         setCurrentEditExercise({exerciseReps: 0,exerciseName: "",keyGUID: createGuid()});
         setAddExerciseModalVisisble(true);
-
     }
 
     function onAddRest(){

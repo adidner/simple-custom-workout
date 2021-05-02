@@ -5,7 +5,7 @@ import { createGuid } from '../src/Utils';
 const initialState: reduxState = {
     currentWorkout: {workoutName:"initial", exerciseList:[], keyGUID:createGuid()},
     //we should grab all workouts from memory, and we should re-index things upon retrieval and whenever we delete an obj
-    allWorkouts: [{workoutName: "workout1name", keyGUID:createGuid(), exerciseList: [{exerciseName: "HSPUs", exerciseReps: 12, keyGUID:createGuid()},{restTime: 187, keyGUID:createGuid()}, {exerciseName: "Pull UPs", exerciseReps: 12, keyGUID:createGuid()}]},{workoutName: "workout2name", keyGUID:createGuid(), exerciseList: [{restTime: 20, keyGUID:createGuid()}, {exerciseName: "Pullups", exerciseReps: 15, keyGUID:createGuid()},]}, {workoutName: "workout3name", keyGUID:createGuid(), exerciseList: []}],
+    allWorkouts: [{workoutName: "workout1", keyGUID:createGuid(), exerciseList: [{exerciseName: "HSPUs", exerciseReps: 12, keyGUID:createGuid()},{restTime: 187, keyGUID:createGuid()}, {exerciseName: "Pull UPs", exerciseReps: 12, keyGUID:createGuid()}]},{workoutName: "workout2", keyGUID:createGuid(), exerciseList: [{restTime: 20, keyGUID:createGuid()}, {exerciseName: "Pullups", exerciseReps: 15, keyGUID:createGuid()},]}, {workoutName: "workout3", keyGUID:createGuid(), exerciseList: []}],
     currentAllWorkoutsIndex: undefined,
 };
   
