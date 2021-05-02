@@ -12,8 +12,6 @@ const initialState: reduxState = {
   export default function rootReducer(state = initialState, action: actionInterface) {
     switch (action.type){
       case SET_CURRENT_WORKOUT_BY_KEY:
-        console.log("state", state);
-        console.log("action", action);
         const newCurrentWorkout: workoutPlaylist[] = state.allWorkouts.filter((current) => current.keyGUID === action.currentWorkoutKey);
         return Object.assign({}, state, {
             currentWorkout: newCurrentWorkout[0],
@@ -51,7 +49,6 @@ const initialState: reduxState = {
         if(!replaced){
           newAllWorkouts.push(action.workout);
         }
-        console.log("newAllWorkouts", newAllWorkouts);
         return Object.assign({}, state, {
           allWorkouts: newAllWorkouts
         })

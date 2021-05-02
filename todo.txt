@@ -15,6 +15,9 @@ NEXT:
 -̶ A̶p̶p̶l̶y̶ s̶a̶v̶e̶ l̶o̶g̶i̶c̶ t̶o̶ a̶d̶d̶ e̶x̶e̶r̶c̶i̶s̶e̶
 - Apply save logic to edit 
     - Also editing and how that should work in terms of dealing with something that already has existed
+WORKING FOR, add rest, add exercise and edit exercise but not edit rest for some reason
+
+
 - Delete workout
 - Delete exercise
 

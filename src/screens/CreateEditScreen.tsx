@@ -28,17 +28,25 @@ export default function CreateEdit(props: any){
     const dispatch = useDispatch()
 
     //TODO: test this, because it probably doesn't work, like the entire function including the redux call
-    function onSaveExercise(element: exerciseElement){
+    function onSaveExerciseOrRestModal(element: exerciseElement | restElement){
         let nextWorkout: workoutPlaylist = newWorkout;
-        nextWorkout.exerciseList.push(element);
-        setNewWorkout(nextWorkout);
+        let replaced = false;
+        console.log("nextWorkout", nextWorkout);
+        console.log("element", element);
+        nextWorkout.exerciseList.forEach((current, index) => {
+            if(current.keyGUID == element.keyGUID){
+                console.log("inf if");
+                nextWorkout.exerciseList[index] = element;
+                setNewWorkout(nextWorkout);
+                replaced = true;
+            }
+        });
+        if(!replaced){
+            nextWorkout.exerciseList.push(element);
+            setNewWorkout(nextWorkout);
+        }
     }
 
-    function onSaveRest(element: restElement){
-        let nextWorkout: workoutPlaylist = newWorkout;
-        nextWorkout.exerciseList.push(element);
-        setNewWorkout(nextWorkout);
-    }
 
     function onSaveWorkout(){
         dispatch(overrideOrAppendAllWorkouts(newWorkout));
@@ -73,15 +81,16 @@ export default function CreateEdit(props: any){
     return (
         <View style={{flex: 1}}>
             <AddExerciseModal 
-                existingExercise={currentEditExercise} visible={addExerciseModalVisisble} 
+                existingExercise={currentEditExercise} 
+                visible={addExerciseModalVisisble} 
                 setVisibleFalse={() => setAddExerciseModalVisisble(false)} 
-                saveActionCallback={(exerciseElement) => onSaveExercise(exerciseElement)}
+                saveActionCallback={(exerciseElement) => onSaveExerciseOrRestModal(exerciseElement)}
             />
             <AddRestModal 
                 existingRest={currentEditRest} 
                 visible={addRestModalVisisble} 
                 setVisibleFalse={() => setAddRestModalVisisble(false)} 
-                saveActionCallback={(restElement) => onSaveRest(restElement)}
+                saveActionCallback={(restElement) => onSaveExerciseOrRestModal(restElement)}
             />
             
             <View style={{flexDirection: "row", justifyContent: "center"}}>
@@ -155,7 +164,7 @@ function RestElement(props: restElement){
             props.openModal();
         }
         if(props.setCurrentEditRest != undefined){
-            props.setCurrentEditRest(props);
+            props.setCurrentEditRest({restTime: props.restTime, restName: props.restName, keyGUID: props.keyGUID});
         }
     }
 
