@@ -16,9 +16,9 @@ import { overrideOrAppendAllWorkouts, setCurrentWorkout} from '../../redux/actio
 
 export default function CreateEdit(props: any){
 
-    const newWorkout = useSelector(getCurrentWorkout);
+    const reduxWorkout = useSelector(getCurrentWorkout);
 
-    // const [newWorkout, dispatch(setCurrentWorkout] = useState<workoutPlaylist>(initialNewWorkout);)
+    const [newWorkout, setNewWorkout] = useState<workoutPlaylist>(reduxWorkout);
     
     const [addExerciseModalVisisble, setAddExerciseModalVisisble] = useState(false);
     const [currentEditExercise, setCurrentEditExercise] = useState({exerciseName: "", exerciseReps: 0, keyGUID:createGuid()});
@@ -104,7 +104,8 @@ export default function CreateEdit(props: any){
                 <TextInput  
                     style={{paddingVertical: 8, paddingHorizontal: 4, margin: 7, borderBottomColor: "black", borderBottomWidth: 1}} 
                     value={newWorkout.workoutName} placeholder={newWorkout.workoutName ? "" : "Enter Workout Title"} 
-                    onChangeText={(newTitle) => dispatch(setCurrentWorkout({workoutName: newTitle, exerciseList: newWorkout.exerciseList, keyGUID: newWorkout.keyGUID}))}
+                    // onChangeText={(newTitle) => dispatch(setCurrentWorkout({workoutName: newTitle, exerciseList: newWorkout.exerciseList, keyGUID: newWorkout.keyGUID}))}
+                    onChangeText={(newTitle) => setNewWorkout({workoutName: newTitle, exerciseList: newWorkout.exerciseList, keyGUID: newWorkout.keyGUID})}
                 />
                 <TouchableOpacity  style={{padding: 12, margin: 7, backgroundColor: ButtonColor}} onPress={() => onSaveWorkout()}><Text>Save Workout</Text></TouchableOpacity>
             </View>
@@ -119,7 +120,8 @@ export default function CreateEdit(props: any){
                     data={newWorkout.exerciseList}
                     renderItem={({ item, index, drag, isActive }) => renderItem( item, index, drag, isActive )}
                     keyExtractor={item => {return item.keyGUID}}
-                    onDragEnd={({ data }) => dispatch(setCurrentWorkout({workoutName: newWorkout.workoutName, exerciseList: data, keyGUID: newWorkout.keyGUID}))}
+                    // onDragEnd={({ data }) => dispatch(setCurrentWorkout({workoutName: newWorkout.workoutName, exerciseList: data, keyGUID: newWorkout.keyGUID}))}
+                    onDragEnd={({ data }) => setNewWorkout({workoutName: newWorkout.workoutName, exerciseList: data, keyGUID: newWorkout.keyGUID})}
                 />
             </View>
             

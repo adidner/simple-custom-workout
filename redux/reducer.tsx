@@ -39,7 +39,7 @@ const initialState: reduxState = {
         })
       //TODO: test this, because it probably doesn't work
       case OVERRIDE_OR_APPEND_ALL_WORKOUTS:
-        let newAllWorkouts: workoutPlaylist[] = state.allWorkouts;
+        let newAllWorkouts: workoutPlaylist[] = JSON.parse(JSON.stringify(state.allWorkouts));
         let replaced: boolean = false;
         newAllWorkouts.forEach((current, index) => {
           if(current.keyGUID == action.workout.keyGUID){
