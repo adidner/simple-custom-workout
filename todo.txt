@@ -14,11 +14,13 @@ NEXT:
 -̶ A̶p̶p̶l̶y̶ s̶a̶v̶e̶ l̶o̶g̶i̶c̶ t̶o̶ a̶d̶d̶ r̶e̶s̶t̶
 -̶ A̶p̶p̶l̶y̶ s̶a̶v̶e̶ l̶o̶g̶i̶c̶ t̶o̶ a̶d̶d̶ e̶x̶e̶r̶c̶i̶s̶e̶
 - Apply save logic to edit 
-    - Also editing and how that should work in terms of dealing with something that already has existed
-WORKING FOR, add rest, add exercise and edit exercise but not edit rest for some reason
+    -̶ A̶l̶s̶o̶ e̶d̶i̶t̶i̶n̶g̶ a̶n̶d̶ h̶o̶w̶ t̶h̶a̶t̶ s̶h̶o̶u̶l̶d̶ w̶o̶r̶k̶ i̶n̶ t̶e̶r̶m̶s̶ o̶f̶ d̶e̶a̶l̶i̶n̶g̶ w̶i̶t̶h̶ s̶o̶m̶e̶t̶h̶i̶n̶g̶ t̶h̶a̶t̶ a̶l̶r̶e̶a̶d̶y̶ h̶a̶s̶ e̶x̶i̶s̶t̶e̶d̶
+W̶O̶R̶K̶I̶N̶G̶ F̶O̶R̶,̶ a̶d̶d̶ r̶e̶s̶t̶,̶ a̶d̶d̶ e̶x̶e̶r̶c̶i̶s̶e̶ a̶n̶d̶ e̶d̶i̶t̶ e̶x̶e̶r̶c̶i̶s̶e̶ b̶u̶t̶ n̶o̶t̶ e̶d̶i̶t̶ r̶e̶s̶t̶ f̶o̶r̶ s̶o̶m̶e̶ r̶e̶a̶s̶o̶n̶
 
 
 - Delete workout
+    - Fix modal to be more consistent with the other modals and clickable and jazz (maybe on the top level?)
+    - Confirm logic of callbacks and redux store actions/follow throught/re-renders
 - Delete exercise
 
 
