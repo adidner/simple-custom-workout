@@ -31,11 +31,8 @@ export default function CreateEdit(props: any){
     function onSaveExerciseOrRestModal(element: exerciseElement | restElement){
         let nextWorkout: workoutPlaylist = newWorkout;
         let replaced = false;
-        console.log("nextWorkout", nextWorkout);
-        console.log("element", element);
         nextWorkout.exerciseList.forEach((current, index) => {
             if(current.keyGUID == element.keyGUID){
-                console.log("inf if");
                 nextWorkout.exerciseList[index] = element;
                 setNewWorkout(nextWorkout);
                 replaced = true;

@@ -44,10 +44,7 @@ export default function AddRestModal(props: props){
 
     function onChangeSeconds(text: string){
         var numberVersion: number = Number(text);
-        //console.log("numberVersion", numberVersion);
         if(numberVersion >= 0 && numberVersion <= 59){
-            
-            //console.log("in setter");
             setSeconds(numberVersion);
         }
     }
