@@ -25,7 +25,7 @@ export default function AddRestModal(props: props){
     function onSave(){
         let newRestElement: restElement = {
             restTime: minutes * 60 + seconds,
-            keyGUID: createGuid(),
+            keyGUID: props.existingRest.keyGUID,
         };
         props.saveActionCallback(newRestElement);
         props.setVisibleFalse();
