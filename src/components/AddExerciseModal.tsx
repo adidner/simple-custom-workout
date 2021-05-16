@@ -64,8 +64,8 @@ export default function AddExerciseModal(props: props){
                         </View>
                     </View>
                     <View style={styles.modalRow}>
-                        <TouchableOpacity style={styles.modalButton} onPress={onSave}><Text>Save</Text></TouchableOpacity>
                         <TouchableOpacity style={styles.modalButton} onPress={onCancel}><Text>Cancel</Text></TouchableOpacity>
+                        <TouchableOpacity style={styles.modalButton} onPress={onSave}><Text>Save</Text></TouchableOpacity>
                     </View>
                 </View>
             </View>

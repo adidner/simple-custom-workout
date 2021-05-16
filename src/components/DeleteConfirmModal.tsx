@@ -1,11 +1,12 @@
 import React from 'react';
-import {Text, Modal, View} from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import {Text, Modal, View, TouchableOpacity} from 'react-native';
+import { styles } from '../../styles/styles'
 
 interface DeleteConfirmModalPropsInterface {
     onYes?: () => void;
     onCancel?: () => void;
     visible: boolean;
+    setVisibleFalse: () => void;
     deleteTargetText: string;
 }
 
@@ -21,6 +22,7 @@ export default function DeleteConfirmModal(props: DeleteConfirmModalPropsInterfa
     }
 
     function onCancel(){
+        props.setVisibleFalse();
         props.onCancel?.();
     }
 
@@ -30,11 +32,13 @@ export default function DeleteConfirmModal(props: DeleteConfirmModalPropsInterfa
             transparent={true}
             visible={props.visible}            
         >
-            <View style={{justifyContent: 'space-around'}}>
-                <Text>Are you sure you want to delete: {props.deleteTargetText}</Text>
-                <View style={{flexDirection:"row"}}>
-                    <TouchableOpacity onPress={onYes}><Text>Yes</Text></TouchableOpacity>
-                    <TouchableOpacity onPress={onCancel}><Text>Cancel</Text></TouchableOpacity>
+            <View style={styles.centeredView}>    
+                <View style={styles.modalView}>
+                    <Text>Are you sure you want to delete: {props.deleteTargetText}</Text>
+                    <View style={styles.modalRow}>
+                        <TouchableOpacity style={styles.modalButton} onPress={() => onCancel()}><Text>Cancel</Text></TouchableOpacity>
+                        <TouchableOpacity style={styles.modalButton} onPress={onYes}><Text>Yes</Text></TouchableOpacity>
+                    </View>
                 </View>
             </View>
         </Modal>

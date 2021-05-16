@@ -9,11 +9,15 @@ import { getAllWorkouts } from '../../redux/selectors';
 import { workoutPlaylist } from '../../constants/interfaces';
 import { deleteWorkoutByKey, setCurrentWorkOutBlank, setCurrentWorkoutByKey } from '../../redux/actions';
 import DeleteConfirmModal from '../components/DeleteConfirmModal';
+import AddExerciseModal from '../components/AddExerciseModal';
 
 export default function CreateStart(props: any){
 
     //do async stuff to grab DATA array
     let DATA: workoutPlaylist[] = useSelector(getAllWorkouts);
+
+    const [deleteModalVisible, setDeleteModalVisible] = useState<boolean>(false);
+    const [currentDeleteWorkoutKeyGUID, setCurrentDeleteWorkoutKeyGUID] = useState<string>();
 
     const dispatch = useDispatch();
 
@@ -23,8 +27,14 @@ export default function CreateStart(props: any){
         props.navigation.navigate('CreateEdit');
     }
 
+    function onDelete(){
+        console.log("currentDeletWorkout", currentDeleteWorkoutKeyGUID);
+    }
+
     return (
         <View style={{paddingLeft: 10, paddingRight: 10, alignItems:"center", justifyContent: "space-around", flex: 1}}>
+            <DeleteConfirmModal setVisibleFalse={() => setDeleteModalVisible(false)} visible={deleteModalVisible} deleteTargetText={props.name} onYes={onDelete} onCancel={() => setDeleteModalVisible(false)}/>
+    
             <View style={{ flex: 0.25, justifyContent:'center'}}><Text style={{fontSize:LargeFontSize}}>Simple Custom Workout</Text></View>
 
             <View style={{flex: 1.5, backgroundColor: "yellow",alignSelf: "stretch", paddingHorizontal: 15}}>
@@ -32,7 +42,7 @@ export default function CreateStart(props: any){
                 ? <Text>No Workouts Saved</Text> 
                 : <FlatList
                     data={DATA}
-                    renderItem={({item}) => <WorkoutElement name={item.workoutName} navigation={props.navigation} keyGUID={item.keyGUID}/>}
+                    renderItem={({item}) => <WorkoutElement setDeleteModalVisible={setDeleteModalVisible} name={item.workoutName} navigation={props.navigation} keyGUID={item.keyGUID} setCurrentDeleteWorkoutKeyGUID={setCurrentDeleteWorkoutKeyGUID}/>}
                     keyExtractor={item => item.workoutName}
                 />}
             </View>
@@ -42,16 +52,10 @@ export default function CreateStart(props: any){
     );
 }
 
-function WorkoutElement(props: {name:string, navigation: any, keyGUID:string}){
+function WorkoutElement(props: {name:string, navigation: any, keyGUID:string, setDeleteModalVisible: React.Dispatch<React.SetStateAction<boolean>>,setCurrentDeleteWorkoutKeyGUID: (keyGUID:string) => void}){
 
     const dispatch = useDispatch();
-    const [deleteModalVisible, setDeleteModalVisible] = useState<boolean>(false);
-
-    function onDelete(){
-        setDeleteModalVisible(false);
-        //dispatch an action to delete the workout element by key and pass the key        
-        dispatch(deleteWorkoutByKey(props.keyGUID));
-    }
+    
     
     function onEdit(){
         //go to other screen and populate with that workout
@@ -62,17 +66,21 @@ function WorkoutElement(props: {name:string, navigation: any, keyGUID:string}){
     function onStartWorkout(){
 
     }
+
+    function onTrashcanPress(){
+        props.setCurrentDeleteWorkoutKeyGUID(props.keyGUID)
+        props.setDeleteModalVisible(true)
+    }
     
     return (
         <>
-        <DeleteConfirmModal visible={deleteModalVisible} deleteTargetText={props.name} onYes={onDelete} onCancel={() => setDeleteModalVisible(false)}/>
-        <TouchableOpacity onPress={onStartWorkout} style={{flexDirection: "row",  marginVertical: 10, padding: 12, flex: 1, backgroundColor: "purple", alignItems:"center", justifyContent:'space-between'}}>
-            <View><Text style={{fontSize: MediumFontSize}}>{props.name}</Text></View>
-            <View style={{flexDirection: "row"}}>
-                <TouchableOpacity onPress={() => onEdit()} style={{paddingHorizontal:7}}><View style={{backgroundColor: ButtonColor, padding: 12}}><MaterialIcons name="mode-edit" size={24} color="black" /></View></TouchableOpacity>
-                <TouchableOpacity onPress={() => setDeleteModalVisible(true)} style={{paddingHorizontal:7}}><View style={{backgroundColor: ButtonColor, padding: 12}}><MaterialCommunityIcons name="trash-can" size={24} color="black" /></View></TouchableOpacity>
-            </View>
-        </TouchableOpacity>
+            <TouchableOpacity onPress={onStartWorkout} style={{flexDirection: "row",  marginVertical: 10, padding: 12, flex: 1, backgroundColor: "purple", alignItems:"center", justifyContent:'space-between'}}>
+                <View><Text style={{fontSize: MediumFontSize}}>{props.name}</Text></View>
+                <View style={{flexDirection: "row"}}>
+                    <TouchableOpacity onPress={() => onEdit()} style={{paddingHorizontal:7}}><View style={{backgroundColor: ButtonColor, padding: 12}}><MaterialIcons name="mode-edit" size={24} color="black" /></View></TouchableOpacity>
+                    <TouchableOpacity onPress={() => onTrashcanPress()} style={{paddingHorizontal:7}}><View style={{backgroundColor: ButtonColor, padding: 12}}><MaterialCommunityIcons name="trash-can" size={24} color="black" /></View></TouchableOpacity>
+                </View>
+            </TouchableOpacity>
         </>
     );
 }
