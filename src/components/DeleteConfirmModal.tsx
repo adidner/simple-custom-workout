@@ -19,6 +19,7 @@ export default function DeleteConfirmModal(props: DeleteConfirmModalPropsInterfa
     function onYes(){
         //do some async stuff
         props.onYes?.();
+        props.setVisibleFalse();
     }
 
     function onCancel(){

@@ -28,6 +28,9 @@ export default function CreateStart(props: any){
     }
 
     function onDelete(){
+        if(currentDeleteWorkoutKeyGUID){
+            dispatch(deleteWorkoutByKey(currentDeleteWorkoutKeyGUID))
+        }
         console.log("currentDeletWorkout", currentDeleteWorkoutKeyGUID);
     }
 
