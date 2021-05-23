@@ -12,7 +12,7 @@ import { ButtonColor } from '../../constants/colorStuff';
 import DraggableFlatList from "react-native-draggable-flatlist";
 import AddExerciseModal from '../components/AddExerciseModal';
 import AddRestModal from '../components/AddRestModal';
-import { overrideOrAppendAllWorkouts, setCurrentWorkout} from '../../redux/actions';
+import { deleteExerciseOrRestByKey, overrideOrAppendAllWorkouts, setCurrentWorkout} from '../../redux/actions';
 
 export default function CreateEdit(props: any){
 
@@ -123,6 +123,8 @@ export default function CreateEdit(props: any){
 
 function ExerciseElement(props: exerciseElement){
 
+    const dispatch = useDispatch();
+
     function onEditExercise(){
         //pull up the modal and pre-populate it
         if(props.openModal != undefined){
@@ -136,6 +138,7 @@ function ExerciseElement(props: exerciseElement){
 
     function onDeleteExercise(){
         //delete using on changelist
+        dispatch(deleteExerciseOrRestByKey(props.keyGUID))
     }
 
     return (
@@ -155,6 +158,8 @@ function ExerciseElement(props: exerciseElement){
 
 function RestElement(props: restElement){
 
+    const dispatch = useDispatch();
+
     function onEditRest(){
         //pull up modal pre-populated
         if(props.openModal != undefined){
@@ -167,6 +172,7 @@ function RestElement(props: restElement){
 
     function onDeleteRest(){
         //delete using on change list
+        dispatch(deleteExerciseOrRestByKey(props.keyGUID))
     }
 
     return (

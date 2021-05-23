@@ -18,11 +18,13 @@ NEXT:
 W̶O̶R̶K̶I̶N̶G̶ F̶O̶R̶,̶ a̶d̶d̶ r̶e̶s̶t̶,̶ a̶d̶d̶ e̶x̶e̶r̶c̶i̶s̶e̶ a̶n̶d̶ e̶d̶i̶t̶ e̶x̶e̶r̶c̶i̶s̶e̶ b̶u̶t̶ n̶o̶t̶ e̶d̶i̶t̶ r̶e̶s̶t̶ f̶o̶r̶ s̶o̶m̶e̶ r̶e̶a̶s̶o̶n̶
 
 
-- Delete workout
-    - Fix modal to be more consistent with the other modals and clickable and jazz (maybe on the top level?)
-    - Confirm logic of callbacks and redux store actions/follow throught/re-renders
-- Delete exercise
-
+-̶ D̶e̶l̶e̶t̶e̶ w̶o̶r̶k̶o̶u̶t̶
+    -̶ F̶i̶x̶ m̶o̶d̶a̶l̶ t̶o̶ b̶e̶ m̶o̶r̶e̶ c̶o̶n̶s̶i̶s̶t̶e̶n̶t̶ w̶i̶t̶h̶ t̶h̶e̶ o̶t̶h̶e̶r̶ m̶o̶d̶a̶l̶s̶ a̶n̶d̶ c̶l̶i̶c̶k̶a̶b̶l̶e̶ a̶n̶d̶ j̶a̶z̶z̶ (̶m̶a̶y̶b̶e̶ o̶n̶ t̶h̶e̶ t̶o̶p̶ l̶e̶v̶e̶l̶?̶)̶
+    -̶ C̶o̶n̶f̶i̶r̶m̶ l̶o̶g̶i̶c̶ o̶f̶ c̶a̶l̶l̶b̶a̶c̶k̶s̶ a̶n̶d̶ r̶e̶d̶u̶x̶ s̶t̶o̶r̶e̶ a̶c̶t̶i̶o̶n̶s̶/̶f̶o̶l̶l̶o̶w̶ t̶h̶r̶o̶u̶g̶h̶t̶/̶r̶e̶-̶r̶e̶n̶d̶e̶r̶s̶
+- Delete exercise or rest
+    - Redux stuff implemented
+    - Looked like we aren't triggering a re-fresh even though the object our reducers returning is correct
+    - investigate further
 
 
 U̶P̶D̶A̶T̶E̶S̶:̶ 
