@@ -43,10 +43,6 @@ const initialState: reduxState = {
             }
           } 
         );
-        console.log("next state", {
-          currentWorkout: nextCurrentWorkout,
-          allWorkouts: nextAllWorkouts,
-        });
         return Object.assign({}, state, {
           currentWorkout: nextCurrentWorkout,
           allWorkouts: nextAllWorkouts,

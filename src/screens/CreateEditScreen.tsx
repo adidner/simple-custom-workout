@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Text, TextInput, View} from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useDispatch, useSelector } from 'react-redux';
@@ -16,9 +16,16 @@ import { deleteExerciseOrRestByKey, overrideOrAppendAllWorkouts, setCurrentWorko
 
 export default function CreateEdit(props: any){
 
-    const reduxWorkout = useSelector(getCurrentWorkout);
+    let reduxWorkout = useSelector(getCurrentWorkout);
 
     const [newWorkout, setNewWorkout] = useState<workoutPlaylist>(reduxWorkout);
+
+    useEffect(() => {
+        setNewWorkout(reduxWorkout);
+    },[reduxWorkout])
+    
+    console.log("redux workout", reduxWorkout);
+    console.log("newWorkout state", newWorkout);
     
     const [addExerciseModalVisisble, setAddExerciseModalVisisble] = useState(false);
     const [currentEditExercise, setCurrentEditExercise] = useState({exerciseName: "", exerciseReps: 0, keyGUID:createGuid()});
