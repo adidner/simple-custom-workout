@@ -60,7 +60,7 @@ export default function AddExerciseModal(props: props){
                         
                         <View style={styles.modalColumn}>
                             <TextInput style={styles.modalInput} onChangeText={text => setExerciseName(text)} value={exerciseName}/>
-                            <TextInput style={styles.modalInput} onChangeText={setExerciseReps} value={exerciseReps}/>
+                            <TextInput style={styles.modalInput} keyboardType={'numeric'} onChangeText={setExerciseReps} value={exerciseReps}/>
                         </View>
                     </View>
                     <View style={styles.modalRow}>
