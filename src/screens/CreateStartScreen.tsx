@@ -67,7 +67,8 @@ function WorkoutElement(props: {name:string, navigation: any, keyGUID:string, se
     }
     
     function onStartWorkout(){
-
+        dispatch(setCurrentWorkoutByKey(props.keyGUID));
+        props.navigation.navigate('PlaylistWorkout');
     }
 
     function onTrashcanPress(){

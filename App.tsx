@@ -7,10 +7,12 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Settings from './src/screens/SettingsScreen';
 import CreateStart from './src/screens/CreateStartScreen';
 import CreateEdit from './src/screens/CreateEditScreen';
-import Exercise from './src/screens/ExerciseScreen';
-import Rest from './src/screens/RestScreen';
+
+import PlaylistWorkout from './src/screens/PlaylistWorkoutScreen';
+
 import store from './redux/store';
 import { Provider } from 'react-redux';
+
 
 
 const Stack = createStackNavigator();
@@ -23,8 +25,7 @@ export default function App() {
           <Stack.Screen name="CreateStart" component={CreateStart} />
           <Stack.Screen name="Settings" component={Settings} />
           <Stack.Screen name="CreateEdit" component={CreateEdit} />
-          <Stack.Screen name="Exercise" component={Exercise} />
-          <Stack.Screen name="Rest" component={Rest} />
+          <Stack.Screen name="PlaylistWorkout" component={PlaylistWorkout} />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>
