@@ -24,8 +24,6 @@ export default function CreateEdit(props: any){
         setNewWorkout(reduxWorkout);
     },[reduxWorkout])
     
-    console.log("redux workout", reduxWorkout);
-    console.log("newWorkout state", newWorkout);
     
     const [addExerciseModalVisisble, setAddExerciseModalVisisble] = useState(false);
     const [currentEditExercise, setCurrentEditExercise] = useState({exerciseName: "", exerciseReps: 0, keyGUID:createGuid()});

@@ -56,23 +56,22 @@ const initialState: reduxState = {
       //   return Object.assign({}, state, {
       //     currentAllWorkoutsIndex: action.currentAllWorkoutsIndex
       //   })
-      //TODO: test this, because it probably doesn't work
-      // case OVERRIDE_OR_APPEND_ALL_WORKOUTS:
-      //   let newAllWorkouts: workoutPlaylist[] = JSON.parse(JSON.stringify(state.allWorkouts));
-      //   let replaced: boolean = false;
-      //   newAllWorkouts.forEach((current, index) => {
-      //     if(current.keyGUID == action.workout.keyGUID){
-      //       newAllWorkouts[index] = action.workout;
-      //       replaced = true;
-      //     }
-      //   });
+      case OVERRIDE_OR_APPEND_ALL_WORKOUTS:
+        let newAllWorkouts: workoutPlaylist[] = JSON.parse(JSON.stringify(state.allWorkouts));
+        let replaced: boolean = false;
+        newAllWorkouts.forEach((current, index) => {
+          if(current.keyGUID == action.workout.keyGUID){
+            newAllWorkouts[index] = action.workout;
+            replaced = true;
+          }
+        });
           
-      //   if(!replaced){
-      //     newAllWorkouts.push(action.workout);
-      //   }
-      //   return Object.assign({}, state, {
-      //     allWorkouts: newAllWorkouts
-      //   })
+        if(!replaced){
+          newAllWorkouts.push(action.workout);
+        }
+        return Object.assign({}, state, {
+          allWorkouts: newAllWorkouts
+        })
       default:
         return state;
     }
