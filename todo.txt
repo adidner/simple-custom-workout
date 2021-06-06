@@ -32,6 +32,26 @@ C̶r̶e̶a̶t̶e̶ N̶e̶w̶ W̶o̶r̶k̶o̶u̶t̶ i̶s̶ w̶o̶r̶k̶i̶n̶g̶,
 W̶h̶e̶n̶ e̶d̶i̶t̶i̶n̶g̶ t̶h̶e̶ t̶i̶t̶l̶e̶ o̶f̶ t̶h̶e̶ t̶i̶t̶l̶e̶ o̶f̶ a̶n̶ e̶x̶i̶s̶t̶i̶n̶g̶ w̶o̶r̶k̶o̶u̶t̶,̶ t̶h̶e̶ r̶e̶d̶u̶x̶ s̶t̶o̶r̶e̶ s̶e̶e̶m̶s̶ t̶o̶ u̶p̶d̶a̶t̶e̶ b̶u̶t̶ t̶h̶e̶ w̶h̶e̶n̶ g̶o̶i̶n̶g̶ b̶a̶c̶k̶ t̶o̶ t̶h̶e̶ c̶r̶e̶a̶t̶e̶s̶t̶a̶r̶t̶ p̶a̶g̶e̶ i̶t̶ d̶o̶e̶s̶n̶'̶t̶ s̶e̶e̶m̶ t̶o̶ r̶e̶-̶f̶r̶e̶s̶h̶ t̶h̶e̶ g̶r̶a̶b̶ f̶r̶o̶m̶ t̶h̶e̶ r̶e̶d̶u̶x̶ s̶t̶o̶r̶e̶
 
 
+M̶a̶k̶e̶ t̶h̶e̶ p̶l̶a̶y̶l̶i̶s̶t̶W̶o̶r̶k̶o̶u̶t̶ s̶c̶r̶e̶e̶n̶ f̶u̶n̶c̶t̶i̶o̶n̶,̶ w̶o̶r̶k̶ o̶n̶ e̶i̶t̶h̶e̶r̶ P̶l̶a̶y̶l̶i̶s̶t̶E̶x̶e̶r̶c̶i̶s̶e̶ o̶r̶ P̶l̶a̶y̶l̶i̶s̶t̶R̶e̶s̶t̶ 
+
+
+
+Now make it pretty and aligned with the styles on the other pages (it as in the PlaylistExercise and PlaylistRest pages)
+Also add a page for done workout
+Also add a button to get back to the main page after a workout is finished
+
+Persist changes in redux between app reboots
+
+
+
+
+
+
+
+
+
+
+
 
 CreateStart
 - Loading icon for async storage grab
