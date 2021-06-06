@@ -1,13 +1,20 @@
 import React, { useEffect, useState } from 'react';
-import { Text } from 'react-native';
+import { Text, TouchableOpacity, View } from 'react-native';
+import { exerciseElement } from '../../constants/interfaces';
 
-interface props {
-
+interface props extends exerciseElement{
+    nextExercise: () => void;
 }
 
 export default function PlaylistExercise(props: props){
 
     return (
-        <Text>PlaylistExercise</Text>
+        <View>
+            <Text>{props.exerciseName}</Text>
+            <Text>{props.exerciseReps}</Text>
+            <TouchableOpacity onPress={() => props.nextExercise()}>
+                    <Text>Next Exercise</Text>
+            </TouchableOpacity>
+        </View>
     );
 }
