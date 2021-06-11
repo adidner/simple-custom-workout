@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Text, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import { ButtonColor } from '../../constants/colorStuff';
+import { MediumFontSize, SuperLargeFontSize } from '../../constants/fontStuff';
 import { restElement } from '../../constants/interfaces';
 
 interface props extends restElement{
@@ -8,7 +10,6 @@ interface props extends restElement{
 }
 
 export default function PlaylistRest(props: props){
-    console.log("playlistRest", props)
 
     const [secondsLeft, setSecondsLeft] = useState(props.restTime);
 
@@ -30,15 +31,14 @@ export default function PlaylistRest(props: props){
         if(seconds < 10){
             displaySeconds = "0" + seconds.toString()
         }
-        return <Text>{minutes}:{displaySeconds}</Text>
+        return <Text style={{fontSize: SuperLargeFontSize}}>{minutes}:{displaySeconds}</Text>
     }
 
     return (
-        <View>
-            <Text>Rest</Text>
+        <View style={{flex: 1, justifyContent:"space-around", alignItems:"center"}}>
             {displayTime()}
             <TouchableOpacity onPress={() => props.nextExercise()}>
-                <Text>Next Exercise</Text>
+                <Text style={{backgroundColor: ButtonColor, padding: 12, fontSize: MediumFontSize}}>Next Exercise</Text>
             </TouchableOpacity>
         </View>
     );
